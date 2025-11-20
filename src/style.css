@@ -1,1 +1,14 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+ @theme {
+  --color-green-primery: #a4de02;
+  --color-orange: #ffa500;
+  --color-green-secondry: #32cd32;
+  --color-gray-lightness: #ebebeb;
+  --color-bg: #F9FFF3;
+}
+
+body{
+    @apply bg-bg
+    px-12 py-5
+}
