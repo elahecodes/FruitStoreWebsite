@@ -47,15 +47,15 @@ const Sliders = ({
 
   return (
     <div>
-      <div className="container-main relative overflow-hidden h-96 w-full border">
+      <div className="container-main relative overflow-hidden h-96 w-full border border-orange rounded-4xl">
         <div
           ref={SlideContainer}
-          className="slides-container transition-all w-full border"
+          className="slides-container transition-all w-full"
         >
           {items.map((item, index) =>
             isImage ? (
               <img
-                className="object-cover h-96 border"
+                className="object-cover h-96"
                 key={index}
                 src={item.slide}
                 alt=""
@@ -65,19 +65,20 @@ const Sliders = ({
             )
           )}
         </div>
-        <div
-          className={`absolute bg-amber-400 h-11 flex z-20 gap-16 ${
-            isImage ? "right-2/4" : "left-0"
+     
+      </div>
+         <div
+          className={`bg-amber-400 w-40 bottom-0 h-11 flex z-20 justify-center gap-4 ${
+            isImage ? "mr-[45%] -mt-6" : "left-0"
           }`}
         >
-          <button onClick={nextSlide} className="cursor-pointer">
+          <button onClick={nextSlide} className="w-12 border bg-white z-10 h-12 rounded-full cursor-pointer">
             next
           </button>
-          <button onClick={prevSlide} className="cursor-pointer">
+          <button onClick={prevSlide} className="w-12 border bg-white z-10 h-12 rounded-full cursor-pointer">
             prev
           </button>
         </div>
-      </div>
     </div>
   );
 };

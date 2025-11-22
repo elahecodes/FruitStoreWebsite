@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "img": "/src/assets/icons/coconut.png",
+    "title": "میوه های استوایی"
+  },
+  {
+    "id": 2,
+    "img": "/src/assets/icons/apple.png",
+    "title": "میوه فصل"
+  },
+  {
+    "id": 3,
+    "img": "/src/assets/icons/fig.png",
+    "title": "میوه خشک"
+  },
+  {
+    "id": 4,
+    "img": "/src/assets/icons/fruitbox.png",
+    "title": "صیفی جات"
+  },
+  {
+    "id": 5,
+    "img": "/src/assets/icons/potato.png",
+    "title": "بسته بندی شده"
+  }
+  ,
+  {
+    "id": 6,
+    "img": "/src/assets/icons/potato.png",
+    "title": "بسته بندی شده"
+  }
+]
