@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import Sliders from "../sliders/Sliders";
 import direction from "/src/assets/icons/direction.png";
 import bgOrange from "/src/assets/background/bg-orange.png";
 
-const home = () => {
+const Home = () => {
   const [banners, setBanners] = useState([]);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [directionBanner] = useState("vertical");
-  // const [directionProducts] = useState('12')
-  let vertical;
-  let horizontal;
+  const [services, setServices] = useState([]);
+  const [ctrlElem, setCtrlElem] = useState(null);
+  const description = useRef();
+
+  useEffect(() => {
+    fetch("/src/data/services.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data);
+      })
+      .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
+  }, []);
 
   useEffect(() => {
     fetch("/src/data/gategories.json")
@@ -21,7 +29,6 @@ const home = () => {
       })
       .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
   }, []);
-  console.log(categories);
 
   useEffect(() => {
     fetch("/src/data/data.json")
@@ -39,6 +46,9 @@ const home = () => {
       })
       .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
   }, []);
+  const showDescription = (id) => {
+    setCtrlElem((prev) => (prev === id ? null : id));
+  };
 
   return (
     <div>
@@ -51,43 +61,25 @@ const home = () => {
           isImage={true}
         />
       </section>
-      <section className="w-full grid grid-cols-2 md:grid-cols-4 mt-20">
-        <div className="flex flex-col justify-center  gap-2 items-center">
-          <img
-            className="w-14 bg-green-secondry/50 rounded-full p-2"
-            src={direction}
-            alt=""
-          />
-          <span className="text-2xl">شعب</span>
-          <b className="text-3xl">15</b>
-        </div>
-        <div className="flex flex-col justify-center gap-2  items-center">
-          <img
-            className="w-14 bg-green-secondry/50 rounded-full p-2"
-            src={direction}
-            alt=""
-          />
-          <span className="text-2xl">شعب</span>
-          <b className="text-3xl">15</b>
-        </div>
-        <div className="flex flex-col justify-center gap-2 items-center">
-          <img
-            className="w-14 bg-green-secondry/50 rounded-full p-2"
-            src={direction}
-            alt=""
-          />
-          <span className="text-2xl">شعب</span>
-          <b className="text-3xl">15</b>
-        </div>
-        <div className="flex flex-col justify-center gap-2  items-center">
-          <img
-            className="w-14 bg-green-secondry/50 rounded-full p-2"
-            src={direction}
-            alt=""
-          />
-          <span className="text-2xl">شعب</span>
-          <b className="text-3xl">15</b>
-        </div>
+      <section className="w-full grid grid-cols-2 md:grid-cols-4 mt-20 py-6 px-2 rounded-2xl">
+        {services.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => showDescription(item.id)}
+            className="flex flex-col justify-center cursor-pointer gap-2 items-center"
+          >
+            <span className="bg-green-secondry/50 rounded-full p-3">
+              <svg className="w-9" viewBox={item.viewBox}>
+                <path d={item.d} />
+              </svg>
+            </span>
+            <span>{item.title}</span>
+          <div className={`w-full overflow-hidden cursor-pointer animate-opacityAnime ${ctrlElem === item.id ? 'h-72' : 'h-0'}`}>
+              <p className="text-justify">{item.description}</p>
+          </div>
+          </div>
+          
+        ))}
       </section>
       <section className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-28">
         {categories.map((item) => (
@@ -135,4 +127,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

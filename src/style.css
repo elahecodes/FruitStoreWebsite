@@ -1,16 +1,28 @@
 @import "tailwindcss";
 
- @theme {
+@theme {
   --color-green-primery: #a4de02;
   --color-orange: #ffa500;
   --color-green-secondry: #32cd32;
   --color-gray-lightness: #ebebeb;
   --color-bg: #F9FFF3;
-  --color-green-lightness : #E2FF8C;
-  --shadow-green-primery : 0 0 0 10px 20px;
+  --color-green-lightness: #E2FF8C;
+  --shadow-green-primery: 0 0 0 10px 20px;
+  --animate-opacity : opacityAnime 1s linear forwards;
+  
+  @keyframes opacityAnime {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-body{
-    @apply bg-bg
-    px-12 py-5
+body {
+  @apply bg-bg px-12 py-5;
 }
+

@@ -21,18 +21,20 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
     });
   };
   const prevSlide = () => {
-    setCounter((prevNumber) => {
-      let newNumber = prevNumber - 1;
-      if (newNumber < 0) {
-        newNumber = NumsOfItems - 1;
-        let lastSlide = size * (NumsOfItems - 1);
-        setMove(lastSlide);
-      } else {
-        setMove((prev) => prev + size);
-      }
-      return newNumber;
-    });
+   setCounter((prev) => {
+    let newNumber = prev - 1
+    if (newNumber < 0) {
+      newNumber = 0;
+      setMove(0)
+    }
+    else{
+      setMove((prev) => prev + size)
+    }
+    return newNumber;
+   })
   };
+  
+  
 
   useEffect(() => {
     SlideContainer.current.style.transform = `${
@@ -87,7 +89,7 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
       </div>
       <div
         className={`w-40 bottom-0 h-11 flex z-20 justify-center gap-4 ${
-          isImage ? "mr-[45%] -mt-6" : "left-0 absolute top-0"
+          isImage ? "mr-[43%] -mt-6" : "left-0 absolute top-0"
         }`}
       >
         <button
