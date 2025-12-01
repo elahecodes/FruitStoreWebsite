@@ -13,7 +13,7 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
       let newNumber = prevNumber + 1;
       if (newNumber >= NumsOfItems) {
         newNumber = 0;
-        setMove(0);
+        setMove(-size * newNumber);
       } else {
         setMove((prev) => prev - size);
       }
@@ -21,20 +21,17 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
     });
   };
   const prevSlide = () => {
-   setCounter((prev) => {
-    let newNumber = prev - 1
-    if (newNumber < 0) {
-      newNumber = 0;
-      setMove(0)
-    }
-    else{
-      setMove((prev) => prev + size)
-    }
-    return newNumber;
-   })
+    setCounter((prev) => {
+      let newNumber = prev - 1;
+      if (newNumber < 0) {
+        newNumber = 0;
+        setMove(0);
+      } else {
+        setMove((prev) => prev + size);
+      }
+      return newNumber;
+    });
   };
-  
-  
 
   useEffect(() => {
     SlideContainer.current.style.transform = `${
@@ -43,16 +40,15 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
   }, [move]);
 
   return (
-    <div>
+    <div className="hidden lg:flex relative border">
       <div
-        className={`container-main relative overflow-hidden ${
-          isVertical ? "h-96 w-full border border-orange rounded-4xl" : ""
-        }`}
-      >
+        className="container-main h-96 w-full overflow-x-hidden border-orange rounded-4xl">
         <div
           ref={SlideContainer}
-          className={`slides-container transition-all w-full ${
-            isVertical ? "flex flex-col" : "flex justify-start gap-2"
+          className={`slides-container no-scroll transition-transform duration-300 ease-out w-full ${
+            isVertical
+              ? "flex flex-col overflow-y-hidden"
+              : "flex justify-start gap-2 overflow-x-hidden"
           }`}
         >
           {items.map((item, index) =>
@@ -66,15 +62,15 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
             ) : (
               <div
                 key={index}
-                className="slide border border-neutral-300 bg-white h-80 w-56 rounded-xl flex flex-col justify-between p-2 gap-3"
+                className="slide border shrink-0  border-neutral-300 bg-white h-80 w-56 rounded-xl flex flex-col justify-between p-2 gap-3"
               >
-                <img className="h-40 w-full" src={apple} alt="" />
-                <span className="text-xl">سیب سبز</span>
+                <img className="h-40 w-full" src={item.img} alt="" />
+                <span className="text-xl">{item.title}</span>
                 <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
                   <div className="flex flex-col justify-start">
                     <span>هرکیلو</span>
                     <b>
-                      250,000
+                      {item.price}
                       <span className="text-xs text-gray-500">تومان</span>
                     </b>
                   </div>
@@ -88,7 +84,7 @@ const Sliders = ({ items, NumsOfItems, size, isVertical, isImage }) => {
         </div>
       </div>
       <div
-        className={`w-40 bottom-0 h-11 flex z-20 justify-center gap-4 ${
+        className={`w-40 h-11 z-20 justify-center gap-4  ${
           isImage ? "mr-[43%] -mt-6" : "left-0 absolute top-0"
         }`}
       >

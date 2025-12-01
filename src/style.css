@@ -5,24 +5,45 @@
   --color-orange: #ffa500;
   --color-green-secondry: #32cd32;
   --color-gray-lightness: #ebebeb;
-  --color-bg: #F9FFF3;
-  --color-green-lightness: #E2FF8C;
+  --color-bg: #f9fff3;
+  --color-green-lightness: #e2ff8c;
   --shadow-green-primery: 0 0 0 10px 20px;
-  --animate-opacity : opacityAnime 1s linear forwards;
-  
-  @keyframes opacityAnime {
-    from {
+
+  @keyframes wiggle {
+    0% {
       opacity: 0;
-      transform: translateY(2rem);
+      transform: translateY(-2rem);
     }
-    to {
+    100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
 }
-
+/* استایل برای body */
 body {
   @apply bg-bg px-12 py-5;
 }
 
+@media screen and (max-width: 500px) {
+  body {
+    padding: 0.5rem;
+  }
+}
+
+.no-scroll {
+  touch-action: none;
+  overflow: hidden;
+}
+
+/* ساخت کلاس انیمیشن */
+@utility animate-wiggle {
+  animation: wiggle 1s ease-in-out;
+}
+.services span{
+  transition: 0.5s linear;
+}
+.services:focus span{ 
+  background-color: var(--color-orange);
+  border-radius: 0.5rem;
+}

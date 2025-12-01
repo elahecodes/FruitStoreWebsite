@@ -7,7 +7,7 @@ import phone from '../assets/icons/phone.png'
 
 const Header = () => {
   return (
-    <div>
+    <div className="hidden md:block">
       <nav className=" flex justify-between items-center">
         <ul className="flex gap-8">
           <li>
