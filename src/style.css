@@ -44,6 +44,8 @@ body {
   transition: 0.5s linear;
 }
 .services:focus span{ 
-  background-color: var(--color-orange);
-  border-radius: 0.5rem;
+  background-color: var(--color-bg);
+}
+.services:focus h5{ 
+  color: var(--color-bg);
 }

@@ -35,6 +35,30 @@
         "img" : "/src/assets/images/appleImage.png",
         "title" : "سیب سبز ترش",
         "price" :"250,000"
+    },
+     {
+        "id" : 7,
+        "img" : "/src/assets/images/appleImage.png",
+        "title" : "سیب سبز ترش",
+        "price" :"250,000"
+    },
+    {
+        "id" : 8,
+        "img" : "/src/assets/images/appleImage.png",
+        "title" : "سیب سبز ترش",
+        "price" :"250,000"
+    },
+    {
+        "id" : 9,
+        "img" : "/src/assets/images/appleImage.png",
+        "title" : "سیب سبز ترش",
+        "price" :"250,000"
+    },
+    {
+        "id" : 10,
+        "img" : "/src/assets/images/appleImage.png",
+        "title" : "سیب سبز ترش",
+        "price" :"250,000"
     }
     
 ]
