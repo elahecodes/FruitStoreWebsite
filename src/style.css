@@ -19,6 +19,42 @@
       transform: translateY(0);
     }
   }
+  
+}
+@layer utilities {
+  .scrollbar-custom::-webkit-scrollbar {
+
+    background-color: transparent;
+    height: 0.5rem;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    width: 10rem;
+    border-radius: 1rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #e07c00;
+  }
+  ::-webkit-scrollbar{
+    background-color: transparent;
+    width: 0.4rem;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: rgb(231, 231, 231);
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: var(--color-green-secondry);
+    border-radius: 1rem
+  }
 }
 /* استایل برای body */
 body {
@@ -31,21 +67,15 @@ body {
   }
 }
 
-.no-scroll {
-  touch-action: none;
-  overflow: hidden;
-}
-
 /* ساخت کلاس انیمیشن */
 @utility animate-wiggle {
   animation: wiggle 1s ease-in-out;
 }
-.services span{
-  transition: 0.5s linear;
+.services:hover h5{
+  font-weight: bolder;
 }
-.services:focus span{ 
-  background-color: var(--color-bg);
+.services:hover .icon-container{
+  background-color: var(--color-green-secondry);
+
 }
-.services:focus h5{ 
-  color: var(--color-bg);
-}
+
