@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { useState, useEffect } from "react";
 import Sliders from "../sliders/Sliders";
 import direction from "/src/assets/icons/direction.png";
@@ -9,6 +9,7 @@ import iconTitle from "/src/assets/icons/icon-title.png";
 import arrowLeft from "/src/assets/icons/arrow-left.png";
 import shop from "../assets/icons/shopW.png";
 import iconTitleW from "../assets/icons/icon-title-white.png";
+import { createPortal } from "react-dom";
 const Home = () => {
   const [banners, setBanners] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -53,10 +54,17 @@ const Home = () => {
   const hideDescription = () => {
     setCtrlElem((prev) => (prev = null));
   };
+  // const element = useMemo(() => document.createElement("div"), []);
+
+  // useEffect(() => {
+  //   const root = document.getElementById("modal-root");
+  //   root.appendChild(element);
+  //   return () => root.removeChild(element);
+  // }, [element]);
 
   return (
     <div className="mb-20">
-      <button className="flex justify-start items-center gap-1.5 mt-30 cursor-pointer">
+      <button className="flex justify-start items-center gap-1.5 md:mt-30 cursor-pointer">
         <svg fill="#404040" viewBox="0 0 512 512" width="20" height="20">
           <g id="_01_align_center">
             <path d="M255.104,512.171l-14.871-12.747C219.732,482.258,40.725,327.661,40.725,214.577c0-118.398,95.981-214.379,214.379-214.379   s214.379,95.981,214.379,214.379c0,113.085-179.007,267.682-199.423,284.932L255.104,512.171z M255.104,46.553   c-92.753,0.105-167.918,75.27-168.023,168.023c0,71.042,110.132,184.53,168.023,236.473   c57.892-51.964,168.023-165.517,168.023-236.473C423.022,121.823,347.858,46.659,255.104,46.553z" />

@@ -1,16 +1,35 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import instagram from "../assets/icons/instagram.png";
+import whatsApp from "../assets/icons/whatsApp.png";
+import telegram from "../assets/icons/telegram.png";
+import link from "../assets/icons/link.png";
+import support from "../assets/icons/support.png";
+import volume from "../assets/icons/volume.png";
+import category from "../assets/icons/category.png";
 
 const Footer = () => {
   const location = useLocation();
+  const pagesBtn = ["خانه", "وبلاگ ها", "درباره ما", "محصولات", "پیگیری سفارش"];
+  const categoriesBtn = [
+    "میوه های استوایی",
+    "میوه فصل",
+    "میوه خشک",
+    "صیفی جات",
+    "بسته بندی شده",
+  ];
+  const supportBtn = [
+    "راهنمای خرید",
+    "ارسال و تحویل",
+    "بازگشت کالا",
+    "حریم خصوصی",
+  ];
   const data = [
     {
       selectedIcon: (
         <svg
           fill="#a4de02"
           className="w-5"
-          id="Layer_1"
-          data-name="Layer 1"
           viewBox="0 0 24 24"
           width="512"
           height="512"
@@ -166,19 +185,97 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="flex md:hidden fixed bottom-0 w-full h-16 bg-white border-t-3 border-green-primery z-20 right-0">
-      <ul className="w-full h-full flex justify-between items-center px-4">
+    <footer className="flex fixed bottom-0 w-full h-16 md:h-64 md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:rounded-xl right-0 md:p-4">
+      <ul className="md:hidden w-full h-full flex justify-between items-center px-4">
         {data.map((item, index) => {
           const isActive = location.pathname === item.ads;
           return (
             <li key={index}>
               <Link to={item.ads}>
-                {isActive ? item.selectedIcon : item.icon}
+                text-sm {isActive ? item.selectedIcon : item.icon}
               </Link>
             </li>
           );
         })}
       </ul>
+      <div className="hidden w-full h-full md:flex justify-between items-start gap-20">
+        <div className="w-1/4">
+          <div className="w-full h-8">
+            <img src="" alt="" />
+            <h4 className="text-white">فروشگاه</h4>
+          </div>
+          <p className="w-full text-justify text-neutral-200">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+            animi repellendus numquam ut unde. Totam libero, expedita voluptatum
+            eveniet autem sapiente natus maiores ullam quae deleniti adipisci
+            laboriosam corrupti esse.
+          </p>
+        </div>
+        <div>
+          <h5 className="flex justify-start items-center text-white font-bold gap-1">
+            <img className="w-4 h-4" src={link} alt="" /> لینک‌های مهم
+          </h5>
+          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+            {pagesBtn.map((item, index) => (
+              <li key={index}>
+                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h5 className="flex justify-start items-center text-white font-bold gap-1">
+            <img className="w-4 h-4" src={category} alt="" /> دسته بندی ها
+          </h5>
+          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+            {categoriesBtn.map((item, index) => (
+              <li key={index}>
+                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h5 className="flex justify-start items-center text-white font-bold gap-1">
+           <img className="w-4 h-4" src={support} alt="" />پشتیبانی و خدمات
+          </h5>
+          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+            {supportBtn.map((item, index) => (
+              <li key={index}>
+                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-1/4 flex flex-col justify-between items-start h-full">
+          <form className="w-full flex flex-col justify-start gap-5" action="">
+            <label className="text-white flex justify-start items-center gap-1" htmlFor="">
+             <img className="w-4 h-4" src={volume} alt="" /> در خبرنامه شرکت کنید
+            </label>
+            <div className="w-full flex justify-center items-center">
+              <input
+                className="w-full bg-neutral-200 text-xs px-2 outline-none bg-bg h-10 rounded-br-sm rounded-tr-sm"
+                type="text"
+                placeholder="ایمیل یا شماره همراه هود را وارد کنید"
+              />
+              <button className="w-12 h-10 text-xs font-bold text-neutral-700 bg-green-primery rounded-bl-sm rounded-tl-sm">
+                ثبت
+              </button>
+            </div>
+          </form>
+          <div className="socialMedia flex justify-end w-full items-center gap-3">
+            <img className="w-8 h-8" src={instagram} alt="" />
+            <img className="w-8 h-8" src={whatsApp} alt="" />
+            <img className="w-8 h-8" src={telegram} alt="" />
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };

@@ -19,7 +19,7 @@
       transform: translateY(0);
     }
   }
-  
+
 }
 @layer utilities {
   .scrollbar-custom::-webkit-scrollbar {
@@ -71,6 +71,7 @@ body {
 @utility animate-wiggle {
   animation: wiggle 1s ease-in-out;
 }
+
 .services:hover h5{
   font-weight: bolder;
 }
