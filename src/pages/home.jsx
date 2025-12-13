@@ -63,7 +63,7 @@ const Home = () => {
   // }, [element]);
 
   return (
-    <div className="mb-20">
+    <main className="mb-20">
       <button className="flex justify-start items-center gap-1.5 md:mt-30 cursor-pointer">
         <svg fill="#404040" viewBox="0 0 512 512" width="20" height="20">
           <g id="_01_align_center">
@@ -129,7 +129,7 @@ const Home = () => {
               tabIndex={0}
               role="button"
               key={item.id}
-              className="md:h-48 h-28 sm:h-36 bg-green-lightness rounded-4xl flex flex-col justify-center items-center hover:bg-green-secondry hover:shadow-2xl hover:border-none hover:shadow-green-secondry hover:text-white   focus:bg-green-secondry focus:shadow-2xl focus:border-none focus:shadow-green-secondry transition-all cursor-pointer focus:text-white border border-green-primery gap-3 md:gap-7"
+              className="md:h-48 h-28 sm:h-36 bg-green-lightness rounded-4xl flex flex-col justify-center items-center hover:bg-green-secondry hover:shadow-2xl hover:border-none hover:shadow-green-secondry hover:text-white focus:bg-green-secondry focus:shadow-2xl focus:border-none focus:shadow-green-secondry transition-all cursor-pointer focus:text-white border border-green-primery gap-3 md:gap-7"
             >
               <img
                 className="w-9 sm:w-12 md:w-16 bg-white p-1 sm:p-2 rounded-xl md:rounded-2xl"
@@ -258,7 +258,7 @@ const Home = () => {
         </div>
       </section>
       <section className=""></section>
-    </div>
+    </main>
   );
 };
 

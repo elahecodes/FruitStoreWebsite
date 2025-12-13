@@ -5,14 +5,12 @@ import shop from "../assets/icons/shop.png";
 import user from "../assets/icons/user.png";
 import search from "../assets/icons/search.png";
 import phone from "../assets/icons/phone.png";
-import searchIcon from '../assets/icons/searchIcon.png'
+import searchIcon from "../assets/icons/searchIcon.png";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const openForm = (e) => {
+  const openForm = () => {
     setOpen((prev) => (prev = true));
-    if (e) {
-    }
   };
   useEffect(() => {
     if (isOpen) {
@@ -24,10 +22,10 @@ const Header = () => {
   return (
     <div>
       <div
-      onClick={()=>setOpen(false)}
+        onClick={() => setOpen(false)}
         className={`${
           isOpen
-            ? "md:block absolute top-0 right-0 bg-neutral-600/45 blur-2xl w-full h-full z-30"
+            ? "md:block transition-all absolute top-0 right-0 bg-neutral-600/45 blur-2xl w-full h-full z-30"
             : ""
         }`}
       ></div>
@@ -43,7 +41,7 @@ const Header = () => {
         <label className="flex justify-start items-center gap-1.5" htmlFor="">
           <img className="w-5 h-5" src={searchIcon} alt="" />
           <span className="text-neutral-700">عبارت مورد نظر را وارد کنید</span>
-          </label>
+        </label>
         <input
           placeholder="جستجو ..."
           type="text"
@@ -110,11 +108,18 @@ const Header = () => {
           >
             <img className="w-6 h-6" src={search} alt="" />
           </button>
-          <button className="border cursor-pointer p-2 rounded-md bg-white border-gray-lightness">
+
+          <Link
+            className="border cursor-pointer p-2 rounded-md bg-white border-gray-lightness"
+            to={"/shop"}
+          >
             <img className="w-6 h-6" src={shop} alt="" />
-          </button>
+          </Link>
+
           <button className="border cursor-pointer p-2 rounded-md bg-white border-gray-lightness">
-           <Link to="/login"> <img className="w-6 h-6" src={user} alt="" /></Link>
+            <Link to="/login">
+              <img className="w-6 h-6" src={user} alt="" />
+            </Link>
           </button>
         </div>
       </nav>

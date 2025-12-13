@@ -5,6 +5,8 @@ import Home from "./pages/home.jsx";
 import Login from "./pages/login.jsx";
 import MainLayout from "./pages/mainLayout.jsx";
 import AuthLayout from "./pages/AuthLayout.jsx";
+import VerificationCode from "./pages/verificationCode.jsx";
+import Shop from "./pages/Shop.jsx";
 function App() {
   return (
     <div>
@@ -13,10 +15,12 @@ function App() {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/shop" element={<Shop />} />
         </Route>
 
         <Route element={<AuthLayout />}>
-          <Route path="/login" element ={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/verificationCode" element={<VerificationCode />} />
         </Route>
       </Routes>
     </div>

@@ -128,43 +128,40 @@ const Footer = () => {
         <svg
           fill="#a4de02"
           className="w-5"
-          id="Layer_1"
-          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Filled"
           viewBox="0 0 24 24"
           width="512"
           height="512"
         >
-          <path d="M15.363,2.636C13.52,.792,10.964-.167,8.349,.023,3.823,.343,0,4.589,0,9.296v5.038c0,2.021,1.642,3.666,3.661,3.666h4.477c5.187,0,9.509-3.667,9.839-8.349,.185-2.613-.768-5.17-2.613-7.016Zm-6.363,11.864c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25,1.25,.56,1.25,1.25-.56,1.25-1.25,1.25Zm1.447-4.871c-.447,.246-.447,.318-.447,.371,0,.553-.448,1-1,1s-1-.447-1-1c0-1.308,1.038-1.879,1.481-2.123,.29-.159,.595-.535,.502-1.066-.069-.392-.402-.725-.793-.793-.306-.056-.602,.022-.832,.216-.228,.19-.358,.47-.358,.767,0,.553-.448,1-1,1s-1-.447-1-1c0-.889,.391-1.727,1.072-2.299,.681-.572,1.577-.814,2.463-.653,1.209,.211,2.204,1.205,2.417,2.417,.223,1.272-.382,2.543-1.506,3.164Zm13.553,6.371v5c0,1.657-1.343,3-3,3h-5c-2.955,0-5.535-1.615-6.92-4.004l.04-.04c5.787-.442,10.47-4.744,10.852-10.164,.017-.234,.01-.466,.012-.699l.013-.013c2.389,1.385,4.004,3.965,4.004,6.92Z" />
+          <path d="M24,9a3,3,0,0,0-3-3H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5ZM8,6a4,4,0,0,1,8,0Z" />
         </svg>
       ),
       icon: (
         <svg
           fill="#404040"
           className="w-5"
-          id="Layer_1"
-          data-name="Layer 1"
+          id="Outline"
           viewBox="0 0 24 24"
           width="512"
           height="512"
         >
-          <path d="M9,11c-.552,0-1-.447-1-1,0-1.308,1.038-1.879,1.481-2.123,.29-.159,.595-.535,.502-1.066-.069-.392-.402-.725-.793-.793-.306-.056-.602,.022-.832,.216-.228,.19-.358,.47-.358,.767,0,.553-.448,1-1,1s-1-.447-1-1c0-.889,.391-1.727,1.072-2.299,.681-.572,1.577-.814,2.463-.653,1.209,.211,2.204,1.205,2.417,2.417,.223,1.272-.382,2.543-1.506,3.164-.447,.246-.447,.318-.447,.371,0,.553-.448,1-1,1Zm0,1c-.69,0-1.25,.56-1.25,1.25s.56,1.25,1.25,1.25,1.25-.56,1.25-1.25-.56-1.25-1.25-1.25Zm10.996-2.92c-.006,.769-.091,1.518-.248,2.242,1.371,1.101,2.252,2.787,2.252,4.678v5c0,.552-.448,1-1,1h-5c-1.891,0-3.577-.881-4.678-2.252-.724,.156-1.473,.242-2.242,.248,1.385,2.389,3.965,4.004,6.92,4.004h5c1.657,0,3-1.343,3-3v-5c0-2.955-1.615-5.535-4.004-6.92Zm-2.019,.571c.185-2.613-.768-5.17-2.613-7.016S10.964-.167,8.349,.023C3.823,.343,0,4.589,0,9.296v5.038c0,2.021,1.642,3.666,3.661,3.666h4.477c5.187,0,9.509-3.667,9.839-8.349Zm-4.027-5.601c1.436,1.435,2.176,3.425,2.033,5.46-.253,3.578-3.772,6.489-7.845,6.489H3.661c-.916,0-1.661-.747-1.661-1.666v-5.038c0-3.696,2.972-7.029,6.49-7.278,.167-.012,.333-.018,.499-.018,1.858,0,3.644,.732,4.961,2.051Z" />
+          <path d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z" />
         </svg>
       ),
-      ads: "/questions",
+      ads: "/shop",
     },
     {
       selectedIcon: (
         <svg
           fill="#a4de02"
           className="w-5"
-          id="Layer_1"
-          data-name="Layer 1"
+          id="Filled"
           viewBox="0 0 24 24"
           width="512"
           height="512"
         >
-          <path d="M16.043,14H7.957A4.963,4.963,0,0,0,3,18.957V24H21V18.957A4.963,4.963,0,0,0,16.043,14Z" />
-          <circle cx="12" cy="6" r="6" />
+          <path d="M24,9a3,3,0,0,0-3-3H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5ZM8,6a4,4,0,0,1,8,0Z" />
         </svg>
       ),
       icon: (
@@ -185,14 +182,14 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="flex fixed bottom-0 w-full h-16 md:h-64 md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:rounded-xl right-0 md:p-4">
+    <footer className="flex fixed bottom-0 w-full h-16 md:h-64 md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:bottom-0 md:rounded-xl right-0 md:p-4">
       <ul className="md:hidden w-full h-full flex justify-between items-center px-4">
         {data.map((item, index) => {
           const isActive = location.pathname === item.ads;
           return (
             <li key={index}>
               <Link to={item.ads}>
-                text-sm {isActive ? item.selectedIcon : item.icon}
+                {isActive ? item.selectedIcon : item.icon}
               </Link>
             </li>
           );
@@ -218,7 +215,7 @@ const Footer = () => {
           <ul className="mt-5 flex flex-col justify-center items-start gap-3">
             {pagesBtn.map((item, index) => (
               <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
                   {item}
                 </Link>
               </li>
@@ -232,7 +229,7 @@ const Footer = () => {
           <ul className="mt-5 flex flex-col justify-center items-start gap-3">
             {categoriesBtn.map((item, index) => (
               <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
                   {item}
                 </Link>
               </li>
@@ -241,12 +238,13 @@ const Footer = () => {
         </div>
         <div>
           <h5 className="flex justify-start items-center text-white font-bold gap-1">
-           <img className="w-4 h-4" src={support} alt="" />پشتیبانی و خدمات
+            <img className="w-4 h-4" src={support} alt="" />
+            پشتیبانی و خدمات
           </h5>
           <ul className="mt-5 flex flex-col justify-center items-start gap-3">
             {supportBtn.map((item, index) => (
               <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:conyent-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
                   {item}
                 </Link>
               </li>
@@ -255,8 +253,12 @@ const Footer = () => {
         </div>
         <div className="w-1/4 flex flex-col justify-between items-start h-full">
           <form className="w-full flex flex-col justify-start gap-5" action="">
-            <label className="text-white flex justify-start items-center gap-1" htmlFor="">
-             <img className="w-4 h-4" src={volume} alt="" /> در خبرنامه شرکت کنید
+            <label
+              className="text-white flex justify-start items-center gap-1"
+              htmlFor=""
+            >
+              <img className="w-4 h-4" src={volume} alt="" /> در خبرنامه شرکت
+              کنید
             </label>
             <div className="w-full flex justify-center items-center">
               <input
