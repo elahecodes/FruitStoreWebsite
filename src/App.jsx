@@ -7,6 +7,8 @@ import MainLayout from "./pages/mainLayout.jsx";
 import AuthLayout from "./pages/AuthLayout.jsx";
 import VerificationCode from "./pages/verificationCode.jsx";
 import Shop from "./pages/Shop.jsx";
+import ProductPage from "./pages/productPage.jsx";
+import Products from "./pages/products.jsx";
 function App() {
   return (
     <div>
@@ -16,6 +18,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/productPage" element={<ProductPage />} />
+          <Route path="/products" element={<Products />} />
+
         </Route>
 
         <Route element={<AuthLayout />}>

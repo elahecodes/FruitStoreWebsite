@@ -13,11 +13,7 @@ const Header = () => {
     setOpen((prev) => (prev = true));
   };
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    isOpen ? (document.body.style.overflow = "hidden") : "auto";
   }, []);
   return (
     <div>
