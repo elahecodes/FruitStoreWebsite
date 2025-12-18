@@ -8,6 +8,26 @@ import phone from "../assets/icons/phone.png";
 import searchIcon from "../assets/icons/searchIcon.png";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const [headerTitles] = useState([
+    {
+      title: "صفحه اصلی",
+      ads: "/home",
+    },
+    {
+      title: "صفحه محصولات",
+      ads: "/products",
+    },
+    ,
+    {
+      title: "روش های ارسال",
+      ads: "/explation",
+    },
+    ,
+    {
+      title: "سوال دارم!",
+      ads: "/question",
+    },
+  ]);
 
   const openForm = () => {
     setOpen((prev) => (prev = true));
@@ -78,21 +98,13 @@ const Header = () => {
         </button>
 
         <ul className="hidden md:flex gap-8">
-          <li>
-            <Link to="/products">محصولات</Link>
-          </li>
-          <li>
-            <Link to="/blogs">وبلاگ ها</Link>
-          </li>
-          <li>
-            <Link to="/aboutUs">درباره ما</Link>
-          </li>
-          <li>
-            <Link to="/comments">نظرات</Link>
-          </li>
-          <li>
-            <Link to="/questions">سوالات پر تکرار</Link>
-          </li>
+          {headerTitles.map((item) => {
+            return (
+              <li>
+                <Link to={item.ads}>{item.title}</Link>
+              </li>
+            );
+          })}
         </ul>
         <div className="hidden md:flex gap-2.5">
           <button className="border cursor-pointer p-2 rounded-md bg-white border-gray-lightness">
