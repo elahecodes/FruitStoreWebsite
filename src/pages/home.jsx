@@ -1,22 +1,18 @@
 import React, { useMemo, useRef } from "react";
 import { useState, useEffect } from "react";
-import Sliders from "../sliders/Sliders";
-import direction from "/src/assets/icons/direction.png";
 import bgOrange from "/src/assets/background/bg-orange.png";
-import bgGreen from "/src/assets/background/bg-green.png";
 import banner from "/src/assets/images/banner.png";
 import iconTitle from "/src/assets/icons/icon-title.png";
 import arrowLeft from "/src/assets/icons/arrow-left.png";
 import shop from "../assets/icons/shopW.png";
 import iconTitleW from "../assets/icons/icon-title-white.png";
-import { createPortal } from "react-dom";
+
 const Home = () => {
   const [banners, setBanners] = useState([]);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState([]);
   const [ctrlElem, setCtrlElem] = useState(null);
-  const description = useRef();
 
   useEffect(() => {
     fetch("/src/data/services.json")
@@ -77,10 +73,10 @@ const Home = () => {
         </h3>
       </button>
       <section className="mt-5 md:mt-10">
-        <div className="w-full h-52 md:h-[25rem] pb-10 scroll-smooth scrollbar-custom snap-x snap-mandatory rounded-2xl flex items-center overflow-x-scroll overflow-y-hidden gap-2">
+        <div className="w-full pb-10 scroll-smooth scrollbar-custom snap-x snap-mandatory rounded-2xl flex items-center overflow-x-scroll overflow-y-hidden gap-2">
           {banners.map((item, index) => (
             <img
-              className="snap-start border border-red-500 rounded-2xl h-52 md:h-auto w-[95%] shrink-0"
+              className="snap-start border border-red-500 rounded-2xl h-40 md:h-[25rem] w-full shrink-0"
               key={index}
               src={item.slide}
               alt=""
@@ -159,7 +155,7 @@ const Home = () => {
             <div className="flex justify-end items-center">
               <button className="bg-white/20 text-white px-2 py-1 pb-2 md:pb-3 rounded-md md:rounded-3xl shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
                 <span className="text-[0.8rem] md:text-[1rem]">
-                  مشاهده بیشتر{" "}
+                  مشاهده بیشتر
                 </span>
                 <img className="w-4 mt-2" src={arrowLeft} alt="" />
               </button>
@@ -192,7 +188,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="w-full my-0 mx-auto flex flex-col justify-between items-start mt-30 gap-6">
+      <section className="w-full my-0 mx-auto flex flex-col justify-between items-start mt-8 md:mt-30 gap-6">
         <div className="w-full flex justify-between items-start">
           <div className="flex justify-center items-start gap-2">
             <img className="w-2 sm:w-2 lg:w-4 mt-1.5" src={iconTitle} alt="" />

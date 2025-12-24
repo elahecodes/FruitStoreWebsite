@@ -19,11 +19,9 @@
       transform: translateY(0);
     }
   }
-
 }
 @layer utilities {
   .scrollbar-custom::-webkit-scrollbar {
-
     background-color: transparent;
     height: 0.5rem;
   }
@@ -32,8 +30,8 @@
     background: #e5e5e5;
     width: 10rem;
     border-radius: 1rem;
-    margin-left: 15rem;
-    margin-right: 15rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
@@ -44,16 +42,16 @@
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background: #e07c00;
   }
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     background-color: transparent;
-    width: 0.4rem;
+    width: 15px;
   }
-  ::-webkit-scrollbar-track{
+  ::-webkit-scrollbar-track {
     background-color: rgb(231, 231, 231);
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background-color: var(--color-green-secondry);
-    border-radius: 1rem
+    border-radius: 1rem;
   }
 }
 /* استایل برای body */
@@ -61,7 +59,14 @@ body {
   @apply bg-bg px-12 py-5;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1200px) {
+   .scrollbar-custom::-webkit-scrollbar-track {
+    margin-left: 10rem;
+    margin-right:10rem;
+   }
+}
+
+@media screen and (max-width: 800px) {
   body {
     padding: 0.5rem;
   }
@@ -72,16 +77,15 @@ body {
   animation: wiggle 1s ease-in-out;
 }
 
-.services:hover h5{
+.services:hover h5 {
   font-weight: bolder;
 }
-.services:hover .icon-container{
+.services:hover .icon-container {
   background-color: var(--color-green-secondry);
-
 }
 
-.input:focus + label, 
-.input:not(:placeholder-shown) + label{
+.input:focus + label,
+.input:not(:placeholder-shown) + label {
   top: 4.3rem;
   color: #505050;
   background-color: var(--color-bg);
