@@ -193,11 +193,11 @@ const Products = () => {
                   );
                 })}
               </div>
-              <div className="w-full flex justify-between mt-6">
-                <h3>فقط کالا های موجود</h3>
+              <div className="w-full flex flex-col gap-4 lg:gap-0 lg:flex-row justify-between items-baseline mt-6">
+                <h3 className="self-start text-sm">فقط کالا های موجود</h3>
                 <div
                   onClick={() => ActiveBtn(1)}
-                  className={`w-16 flex items-center p-1 bg-neutral-200 rounded-2xl cursor-pointer ${
+                  className={`w-16 self-end flex items-center p-1 bg-neutral-200 rounded-2xl cursor-pointer ${
                     active[0] === true && active[1] === 1
                       ? "justify-start"
                       : "justify-end"
@@ -212,11 +212,11 @@ const Products = () => {
                   ></div>
                 </div>
               </div>
-              <div className="w-full flex justify-between mt-6">
-                <h3>فقط کالا های تخفیف خورده</h3>
+                 <div className="w-full flex flex-col gap-4 lg:gap-0 lg:flex-row justify-between items-baseline mt-6">
+                <h3 className="self-start text-sm">فقط کالا های تخفیف خورده</h3>
                 <div
                   onClick={() => ActiveBtn(2)}
-                  className={`w-16 flex items-center p-1 bg-neutral-200 rounded-2xl cursor-pointer ${
+                  className={`w-16 self-end flex items-center p-1 bg-neutral-200 rounded-2xl cursor-pointer ${
                     active[0] === true && active[1] === 2
                       ? "justify-start"
                       : "justify-end"
@@ -231,15 +231,16 @@ const Products = () => {
                   ></div>
                 </div>
               </div>
-              <div className="w-full flex justify-between items-center gap-1.5 mt-3">
+         
+              <div className="w-full flex justify-between flex-col lg:flex-row items-center gap-1.5 mt-3">
                 <button
-                  className="text-sm w-1/2 pb-2 pt-1.5 rounded-md bg-green-primery text-white font-bold cursor-pointer transition-all"
+                  className="text-xs lg:text-sm w-full lg:w-1/2 pb-2 pt-1.5 rounded-md bg-green-primery text-white font-bold cursor-pointer transition-all"
                   type="submit"
                 >
                   اعمال فیلتر
                 </button>
                 <button
-                  className="text-sm w-1/2 pb-2 pt-1.5 rounded-md bg-neutral-300 font-bold cursor-pointer transition-all text-neutral-800"
+                  className="text-xs lg:text-sm w-full lg:w-1/2 pb-2 pt-1.5 rounded-md bg-neutral-300 font-bold cursor-pointer transition-all text-neutral-800"
                   type="reset"
                 >
                   بازنشانی
@@ -248,10 +249,10 @@ const Products = () => {
             </form>
           </section>
         </aside>
-        <section className="products w-full md:w-3/4 pb-10 md:pb-0">
+        <section className="products w-full md:w-4/5 pb-10 md:pb-0">
           <button
             onClick={() => setOpen(true)}
-            className="border md:hidden rounded border-neutral-100 bg-white px-1 py-2 flex justify-between items-center gap-1.5 float-left mb-5 cursor-pointer"
+            className="border md:hidden rounded border-neutral-200 bg-white px-1 py-2 flex justify-between items-center gap-1.5 float-left mb-5 cursor-pointer"
           >
             <img className="w-3" src={iconFilter} alt="" />
             <span className="text-xs">فیلتر محصولات</span>
@@ -259,7 +260,7 @@ const Products = () => {
           <div className="w-full flex justify-between gap-2 mb-2">
             <div className="flex justify-start items-center gap-2">
               <img className="w-2" src={iconTitle} alt="" />
-              <h2 className="flex justify-center text-lg font-bold gap-0.5">
+              <h2 className="flex justify-center text-sm md:text-lg font-bold gap-0.5">
                 صفحه
                 <span className="text-green-primery underline">محصولات</span>
               </h2>
@@ -267,14 +268,14 @@ const Products = () => {
             <div className="flex justify-center gap-2 items-center">
               {Tags.map((item) => {
                 return (
-                  <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-xs px-2">
+                  <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.5rem] md:text-sm px-2">
                     {item}
                   </button>
                 );
               })}
             </div>
           </div>
-          <div className="w-full grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-1">
+          <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1">
             {showProducts.map((item, index) => (
               <Link to={"/productPage"}>
                 <div
@@ -293,7 +294,7 @@ const Products = () => {
                         </span>
                       </b>
                     </div>
-                    <button className="bg-green-primery p-1 md:p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
+                    <button className="hidden md:block bg-green-primery p-1 md:p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
                       <img
                         className="md:w-6 md:h-6 w-4 h-4"
                         src={shop}

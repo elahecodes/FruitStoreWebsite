@@ -1,0 +1,18 @@
+{
+    "name" : "فروشگاه آنلاین",
+    "shortName" : "shoping",
+    "start_url": "/?shop",
+    "scope": ".",
+    "display" : "standalone",
+    "dir": "rtl",
+    "lang" : "fa",
+    "background-color" : "#000000",
+   
+    "icons": [
+        {
+            "src": "/src/assets/icons/like.png",
+            "sizes" : "48*48",
+            "type" : "image/png"
+        }
+    ]
+}

@@ -97,10 +97,10 @@ const Header = () => {
           </span>
         </button>
 
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex justify-start text-sm gap-4 lg:text-[1.2rem] lg:gap-8">
           {headerTitles.map((item) => {
             return (
-              <li className="hover:underline underline-offset-2 transition-all p-2 rounded">
+              <li className="hover:underline underline-offset-2 transition-all">
                 <Link to={item.ads}>{item.title}</Link>
               </li>
             );
