@@ -1,213 +1,93 @@
 [
   {
     "id": 1,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": " موز",
+    "price": "250,000",
+    "tasteAndAroma": "شیرین و ملایم",
+    "nutritionalBenefits": "پتاسیم بالا، انرژی‌زا، تقویت قلب",
+    "appearance": "پوست زرد و صاف، بافت نرم",
+    "usage": "مصرف تازه، اسموتی، کیک، دسر",
+    "imgOne": "/src/assets/images/benana-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 2,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "کیوی",
+    "price": "90,000",
+    "tasteAndAroma": "ترش و شیرین، معطر",
+    "nutritionalBenefits": "ویتامین C بسیار، فیبر، آنتی‌اکسیدان",
+    "appearance": "پوست قهوه‌ای کرکی، داخل سبز با دانه‌های ریز سیاه",
+    "usage": "تازه، اسموتی، دسر",
+    "imgOne": "/src/assets/images/kiwi-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 3,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "انار",
+    "price": "610,000",
+    "tasteAndAroma": "شیرین و کمی ترش، خوشبو",
+    "nutritionalBenefits": "سرشار از آنتی‌اکسیدان، ویتامین C و فیبر",
+    "appearance": "دانه‌های قرمز و براق، با پوست سفت",
+    "usage": "مصرف تازه، آبمیوه، دسر، سالاد",
+    "imgOne": "/src/assets/images/pamegranate-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 4,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "پرتقال",
+    "price": "100,000",
+    "tasteAndAroma": "شیرین و ترش، خوشبو",
+    "nutritionalBenefits": "ویتامین C، ضد سرماخوردگی",
+    "appearance": "پوست نارنجی، بافت آبدار و دانه‌دار",
+    "usage": "آبمیوه، تازه، دسر، سالاد",
+    "imgOne": "/src/assets/images/orange-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 5,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "توت فرنگی",
+    "price": "174,000",
+    "tasteAndAroma": "شیرین و معطر",
+    "nutritionalBenefits": "ویتامین C، آنتی‌اکسیدان",
+    "appearance": "قرمز روشن، کوچک و مخروطی شکل",
+    "usage": "تازه، دسر، مربا، کیک",
+    "imgOne": "/src/assets/images/strawberries-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 6,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "انبه",
+    "price": "270,000",
+    "tasteAndAroma": "شیرین و خوشبو",
+    "nutritionalBenefits": "ویتامین A، C، فیبر",
+    "appearance": "پوست زرد یا نارنجی، بافت نرم و آبدار",
+    "usage": "تازه، اسموتی، دسر، سالاد",
+    "imgOne": "/src/assets/images/mango-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   },
   {
     "id": 7,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 8,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 9,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 10,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 11,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 12,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 13,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  },
-  {
-    "id": 14,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
+    "title": "انگور",
+    "price": "150,000",
+    "tasteAndAroma": "شیرین و کمی ترش",
+    "nutritionalBenefits": "آنتی‌اکسیدان، ویتامین K و C",
+    "appearance": "خوشه‌ای، رنگ سبز یا بنفش، کوچک و آبدار",
+    "usage": "تازه، کشمش، آبمیوه، دسر",
+    "imgOne": "/src/assets/images/grape-one.jpg",
+    "imgTwo": "",
+    "imgThree": "",
+    "imgFour": ""
   }
-  ,
-  {
-    "id": 15,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-  ,
-  {
-    "id": 16,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-  ,
-  {
-    "id": 17,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 18,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 19,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 20,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 21,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 22,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 23,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 24,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 25,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 26,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 27,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 28,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 29,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 30,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 31,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-   ,
-  {
-    "id": 32,
-    "img": "/src/assets/images/appleImage.png",
-    "title": "سیب سبز ترش",
-    "price": "250,000"
-  }
-  
 ]

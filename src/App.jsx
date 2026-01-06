@@ -9,16 +9,18 @@ import VerificationCode from "./pages/verificationCode.jsx";
 import Shop from "./pages/Shop.jsx";
 import ProductPage from "./pages/productPage.jsx";
 import Products from "./pages/products.jsx";
+import ProductsProvider from "./pages/productProvider.jsx";
+
 function App() {
   return (
-    <div>
+    <ProductsProvider>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/productPage" element={<ProductPage />} />
+          <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
 
         </Route>
@@ -28,7 +30,7 @@ function App() {
           <Route path="/verificationCode" element={<VerificationCode />} />
         </Route>
       </Routes>
-    </div>
+    </ProductsProvider>
   );
 }
 

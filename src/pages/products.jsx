@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useContext, createContext } from "react";
+import { ProductsContext } from "./productProvider";
 import shop from "../assets/icons/shopW.png";
 import iconTitle from "/src/assets/icons/icon-title.png";
 import iconFilter from "/src/assets/icons/panel.png";
 import title from "/src/assets/icons/tag.png";
 import { Link } from "react-router-dom";
-
 const Products = () => {
+  const { products } = useContext(ProductsContext);
+
   let increment = 12;
-  const [products, setProducts] = useState([]);
+
   const [startIndex, setStartIndex] = useState(1);
   const [showProducts, setShowProducts] = useState([]);
   const [active, setActive] = useState([false, null]);
@@ -24,21 +26,10 @@ const Products = () => {
   const [brands] = useState(["برند اول", "برند دوم", "برند سوم", "برند چهارم"]);
 
   useEffect(() => {
-    fetch("/src/data/products.json", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
-  }, []);
-
-  useEffect(() => {
     const start = (startIndex - 1) * increment;
     const end = start + increment;
     setShowProducts(products.slice(start, end));
-  }, [increment, startIndex, products]);
+  }, [products, startIndex]);
 
   const handleCarts = (number) => {
     setStartIndex(number);
@@ -212,7 +203,7 @@ const Products = () => {
                   ></div>
                 </div>
               </div>
-                 <div className="w-full flex flex-col gap-4 lg:gap-0 lg:flex-row justify-between items-baseline mt-6">
+              <div className="w-full flex flex-col gap-4 lg:gap-0 lg:flex-row justify-between items-baseline mt-6">
                 <h3 className="self-start text-sm">فقط کالا های تخفیف خورده</h3>
                 <div
                   onClick={() => ActiveBtn(2)}
@@ -231,7 +222,7 @@ const Products = () => {
                   ></div>
                 </div>
               </div>
-         
+
               <div className="w-full flex justify-between flex-col lg:flex-row items-center gap-1.5 mt-3">
                 <button
                   className="text-xs lg:text-sm w-full lg:w-1/2 pb-2 pt-1.5 rounded-md bg-green-primery text-white font-bold cursor-pointer transition-all"
@@ -277,12 +268,12 @@ const Products = () => {
           </div>
           <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1">
             {showProducts.map((item, index) => (
-              <Link to={"/productPage"}>
+              <Link to={`/productPage/${item.id}`}>
                 <div
                   key={index}
                   className="slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
                 >
-                  <img className="md:h-40 h-24 w-full" src={item.img} alt="" />
+                  <img className="w-full" src={item.imgOne} alt="" />
                   <span className="text-sm md:text-xl">{item.title}</span>
                   <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
                     <div className="flex flex-col justify-start">
