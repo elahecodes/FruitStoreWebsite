@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+
+@font-face {
+  font-family: "lalezar";
+  src: url("/src/assets/fonts/Lalezar-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "dirooz";
+  src: url("/src/assets/fonts/Dirooz.ttf") format("truetype");
+}
+
+
+
 @theme {
   --color-green-primery: #a4de02;
   --color-orange: #ffa500;
@@ -8,19 +20,35 @@
   --color-bg: #f9fff3;
   --color-green-lightness: #e2ff8c;
   --shadow-green-primery: 0 0 0 10px 20px;
+  --font-lalezar :"lalezar" , sans-serif;
+  --font-dirooz :"dirooz" , sans-serif;
+}
 
-  @keyframes wiggle {
-    0% {
-      opacity: 0;
-      transform: translateY(-2rem);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@layer base{
+  body{
+    font-family: var(--font-dirooz);
   }
 }
+
+@keyframes wiggle {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
   .scrollbar-custom::-webkit-scrollbar {
     background-color: transparent;
     height: 0.5rem;
@@ -53,17 +81,25 @@
     background-color: var(--color-green-secondry);
     border-radius: 1rem;
   }
+  .font-lalezar {
+    font-family: var(--font-lalezar);
+  }
+  .font-dirooz{
+    font-family: var(--font-dirooz)
+  }
 }
+
+
 /* استایل برای body */
 body {
   @apply bg-bg px-12 py-5;
 }
 
 @media screen and (max-width: 1200px) {
-   .scrollbar-custom::-webkit-scrollbar-track {
+  .scrollbar-custom::-webkit-scrollbar-track {
     margin-left: 10rem;
-    margin-right:10rem;
-   }
+    margin-right: 10rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -90,3 +126,5 @@ body {
   color: #505050;
   background-color: var(--color-bg);
 }
+
+

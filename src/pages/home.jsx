@@ -1,18 +1,21 @@
-import React, { useMemo, useRef } from "react";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import bgOrange from "/src/assets/background/bg-orange.png";
 import banner from "/src/assets/images/banner.png";
 import iconTitle from "/src/assets/icons/icon-title.png";
 import arrowLeft from "/src/assets/icons/arrow-left.png";
 import shop from "../assets/icons/shopW.png";
 import iconTitleW from "../assets/icons/icon-title-white.png";
+import star from "../assets/icons/star.png";
+import { Link } from "react-router-dom";
+import { ProductsContext } from "./productProvider";
 
 const Home = () => {
   const [banners, setBanners] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
   const [services, setServices] = useState([]);
+  const [comments, setComments] = useState([]);
   const [ctrlElem, setCtrlElem] = useState(null);
+  const data = useContext(ProductsContext);
 
   useEffect(() => {
     fetch("/src/data/services.json")
@@ -36,12 +39,12 @@ const Home = () => {
       })
       .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
 
-    fetch("/src/data/products.json")
+    fetch("/src/data/comments.json")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        setComments(data);
       })
-      .catch((error) => console.log(error + "خطا در دریافت اطلاهات"));
+      .catch((error) => console.log(error));
   }, []);
 
   const showDescription = (id) => {
@@ -50,14 +53,6 @@ const Home = () => {
   const hideDescription = () => {
     setCtrlElem((prev) => (prev = null));
   };
-  // const element = useMemo(() => document.createElement("div"), []);
-
-  // useEffect(() => {
-  //   const root = document.getElementById("modal-root");
-  //   root.appendChild(element);
-  //   return () => root.removeChild(element);
-  // }, [element]);
-
   return (
     <main className="mb-20">
       <button className="flex justify-start items-center gap-1.5 md:mt-30 cursor-pointer">
@@ -79,7 +74,6 @@ const Home = () => {
               className="snap-start border border-red-500 rounded-2xl h-40 md:h-[25rem] w-full shrink-0"
               key={index}
               src={item.slide}
-              alt=""
             />
           ))}
         </div>
@@ -116,8 +110,10 @@ const Home = () => {
       </section>
       <section className="w-full flex flex-col gap-5 mt-8">
         <div className="flex justify-start items-center gap-1.5">
-          <img className="w-2" src={iconTitle} alt="" />
-          <h3 className="text-lg md:text-xl font-extrabold">دسته بندی ها</h3>
+          <img className="w-2" src={iconTitle} />
+          <h3 className="text-lg md:text-2xl font-lalezar text-neutral-800">
+            دسته بندی ها
+          </h3>
         </div>
         <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-3">
           {categories.map((item) => (
@@ -130,7 +126,6 @@ const Home = () => {
               <img
                 className="w-9 sm:w-12 md:w-16 bg-white p-1 sm:p-2 rounded-xl md:rounded-2xl"
                 src={item.img}
-                alt=""
               />
               <span className="text-xs sm:text-[1rem] lg:text-xl">
                 {item.title}
@@ -146,28 +141,101 @@ const Home = () => {
         />
         <div className="w-full absolute flex flex-col justify-center items-center gap-20">
           <div className="w-full right-0 flex justify-between items-center absolute top-3 px-3">
-            <div className="flex justify-center items-center gap-1">
-              <img className="w-2" src={iconTitleW} alt="" />
-              <h4 className="text-white text-lg md:text-xl font-extrabold">
+            <div className="flex justify-center items-center gap-2">
+              <img className="w-3" src={iconTitleW} />
+              <h4 className="text-white text-lg md:text-3xl font-lalezar">
                 محصولات تازه
               </h4>
             </div>
             <div className="flex justify-end items-center">
-              <button className="bg-white/20 text-white px-2 py-1 pb-2 md:pb-3 rounded-md md:rounded-3xl shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
+              <button className="bg-white/20 text-white px-2 py-1 pb-1.5 hover:bg-white hover:text-orange transition rounded-md md:rounded-3xl shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
                 <span className="text-[0.8rem] md:text-[1rem]">
                   مشاهده بیشتر
                 </span>
-                <img className="w-4 mt-2" src={arrowLeft} alt="" />
+                <img className="w-4 mt-1" src={arrowLeft} />
               </button>
             </div>
           </div>
-          <div className="w-[97%] absolute top-10 overflow-x-scroll snap-mandatory snap-x pt-10 pb-3 scrollbar-custom flex justify-start items-center gap-1">
-            {products.map((item, index) => (
+          <div className="w-[97%] absolute top-10 overflow-x-scroll snap-mandatory snap-x no-scrollbar pt-10 pb-3 scrollbar-custom flex justify-start items-center gap-1">
+            {data.map((data) => (
+              <Link to={`/products/${data.id}`}>
+                <div
+                  key={data?.id}
+                  className="slide w-40 md:w-60 h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
+                >
+                  <div className="w-full h-44 overflow-hidden">
+                    <img className="w-full" src={data?.imgOne} alt="image" />
+                  </div>
+                  <span className="text-sm md:text-xl">{data?.title}</span>
+                  <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
+                    <div className="flex flex-col justify-start">
+                      <span className="text-xs md:text-sm">هرکیلو</span>
+                      <b className="text-xs md:text-sm">
+                        {data?.price}
+                        <span className="text-xs text-gray-500 mr-1.5">
+                          تومان
+                        </span>
+                      </b>
+                    </div>
+                    <button className="hidden md:block bg-green-primery p-1 md:p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
+                      <img className="md:w-6 md:h-6 w-4 h-4" src={shop} />
+                    </button>
+                  </div>
+                </div>
+               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="w-full my-0 mx-auto flex flex-col justify-between items-start mt-8 md:mt-30 gap-6">
+        <div className="w-full flex justify-between items-start">
+          <div className="flex justify-center items-start gap-2">
+            <img className="w-2 sm:w-2 lg:w-4 mt-1.5" src={iconTitle} />
+            <h3 className="lg:text-4xl text-xl font-lalezar text-neutral-800">
+              سلامتی و
+              <br />
+              <span className="text-green-primery"> حال خوب</span>
+            </h3>
+          </div>
+          <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
+            <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
+            <img className="w-3 md:w-4 mt-1 md:mt-1" src={arrowLeft} />
+          </button>
+        </div>
+        <div className="banner flex flex-col md:flex-row rounded-2xl justify-end gap-4">
+          <img
+            className="md:w-[50%] hover:shadow-2xl cursor-pointer rounded-2xl transition-all"
+            src={banner}
+          />
+          <img
+            className="md:w-[50%] hover:shadow-2xl cursor-pointer rounded-2xl transition-all"
+            src={banner}
+          />
+        </div>
+      </section>
+      <div className="w-full mt-20 flex justify-between items-center gap-2 bg-white px-2 py-1.5 rounded border border-neutral-100">
+        <div className="flex justify-center items-center gap-2">
+          <img className="w-2" src={iconTitle} />
+          <h3 className="text-lg md:text-2xl font-lalezar text-neutral-800">
+            میوه های پر فروش
+          </h3>
+        </div>
+        <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
+          <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
+          <img className="w-3 md:w-4 mt-1 md:mt-" src={arrowLeft} />
+        </button>
+      </div>
+      <section className="mt-10 bg-green-primery p-4 rounded-2xl">
+        <div className="w-full overflow-x-scroll snap-mandatory snap-x no-scrollbar flex justify-start items-center mt-10 gap-1 scrollbar-custom pb-3 top-10 scrollbar-custom">
+          {data.map((item) => (
+            <Link to={`/productPage/${item.id}`}>
               <div
-                key={index}
-                className="slide w-44 md:w-56 h-62 md:h-80 snap-end hover:border-orange transition-all cursor-pointer border shrink-0  border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3"
+                key={item.id}
+                className="slide snap-start w-44 md:w-56 h-62 md:h-80 hover:border-green-secondry border-green-primery border-2 shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3"
               >
-                <img className="h-40 w-full" src={item.img} alt="" />
+                <div className="w-full h-44 overflow-hidden">
+                  <img className="w-full" src={item?.imgOne} alt="image" />
+                </div>
                 <span className="text-xl">{item.title}</span>
                 <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
                   <div className="flex flex-col justify-start">
@@ -180,80 +248,124 @@ const Home = () => {
                     </b>
                   </div>
                   <button className="bg-green-primery p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
-                    <img className="w-6 h-6" src={shop} alt="" />
+                    <img className="w-6 h-6" src={shop} />
                   </button>
                 </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className=" flex flex-col justify-start items-center gap-5 p-4 rounded-2xl mt-16">
+        <div className="w-full flex justify-between items-center bg-white px-2 py-1 rounded border border-neutral-100">
+          <div className="flex justify-center items-center gap-2">
+            <img className="w-2" src={iconTitle} />
+            <h3 className="text-lg md:text-2xl font-lalezar text-neutral-800">
+              میوه های پر فروش
+            </h3>
+          </div>
+          <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
+            <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
+            <img className="w-3 md:w-4 mt-1 md:mt-1" src={arrowLeft} />
+          </button>
+        </div>
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
+          {data.map((item) => (
+            <Link to={`/productPage/${item.id}`}>
+              <div
+                key={item.id}
+                className="slide snap-start hover:border-orange transition-all cursor-pointer border shrink-0 border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3"
+              >
+                <div className="h-40 overflow-hidden">
+                  <img className="w-full" src={item.imgOne} />
+                </div>
+                <span className="text-xl">{item.title}</span>
+                <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
+                  <div className="flex flex-col justify-start">
+                    <span>هرکیلو</span>
+                    <b>
+                      {item.price}
+                      <span className="text-xs text-gray-500 mr-1.5">
+                        تومان
+                      </span>
+                    </b>
+                  </div>
+                  <button className="hidden lg:block bg-green-primery p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
+                    <img className="w-6 h-6 hidden md:block" src={shop} />
+                  </button>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className="w-full flex flex-col items-center justify-center mt-12 gap-6">
+        <div className="w-full flex justify-start items-center">
+          <img src="" />
+          <h3 className="text-2xl text-neutral-800 font-lalezar">
+            برند های موجود
+          </h3>
+        </div>
+        <div className="w-full grid grid-cols-3 md:grid-cols-4 grid-rows-3 md:grid-rows-2 h-80">
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند اول</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند دوم</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند سوم</span>
+          </div>
+          <div className="bg-white hover:bg-neutral-50 text-neutral-800 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند چهارم</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند پنجم</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند ششم</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند هفتم</span>
+          </div>
+          <div className="bg-white text-neutral-800 hover:bg-neutral-50 transition-all border border-neutral-200 flex justify-center items-center text-2xl">
+            <span className="font-lalezar text-neutral-700">برند هشتم</span>
+          </div>
+        </div>
+      </section>
+      <section className="mt-20 relative">
+        <div className="w-2/6 h-96 bg-green-primery rounded-[5rem] flex justify-between items-start px-9">
+          <div className="font-lalezar text-4xl flex flex-col items-start justify-center mt-26 text-white text-shadow-neutral-800 text-shadow-2xs">
+            نظرات <span>شما عزیزان</span>
+          </div>
+          <div className="w-[85%] h-72 top-10 rounded-xl absolute left-0 p-2 flex justify-start items-center overflow-y-hidden overflow-x-scroll snap-x snap-mandatory no-scrollbar scroll-smooth gap-2">
+            {comments.map((item) => (
+              <div
+                key={item.id}
+                className="w-40 md:w-60 snap-start h-70 border border-neutral-300 bg-white rounded-xl shrink-0 p-2 flex flex-col justify-start items-start gap-4"
+              >
+                <div className="w-full flex justify-between items-center">
+                  <div className="flex justify-start items-center gap-2">
+                    <img className="w-8 rounded-full" src={item.img} />
+                    <h6 className="text-xs md:text-sm">کاربر : {item.name}</h6>
+                  </div>
+                  <div className="flex justify-center items-center gap-1">
+                    <img className="w-3" src={star} />
+                    <img className="w-3" src={star} />
+                    <img className="w-3" src={star} />
+                    <img className="w-3" src={star} />
+                    <img className="w-3" src={star} />
+                  </div>
+                </div>
+                <p className="w-full text-justify bg-neutral-100 text-[0.8rem] md:text-sm p-2 text-neutral-800 rounded">
+                  {item.comment}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="w-full my-0 mx-auto flex flex-col justify-between items-start mt-8 md:mt-30 gap-6">
-        <div className="w-full flex justify-between items-start">
-          <div className="flex justify-center items-start gap-2">
-            <img className="w-2 sm:w-2 lg:w-4 mt-1.5" src={iconTitle} alt="" />
-            <h3 className="lg:text-4xl text-xl font-bold">
-              سلامتی و
-              <br />
-              <span className="text-green-primery"> حال خوب</span>
-            </h3>
-          </div>
-          <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-3 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
-            <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
-            <img className="w-4 mt-2" src={arrowLeft} alt="" />
-          </button>
-        </div>
-        <div className="banner flex flex-col md:flex-row rounded-2xl justify-end gap-4">
-          <img
-            className="md:w-[50%] hover:shadow-2xl cursor-pointer  rounded-2xl transition-all"
-            src={banner}
-            alt=""
-          />
-          <img
-            className="md:w-[50%] hover:shadow-2xl cursor-pointer  rounded-2xl transition-all"
-            src={banner}
-            alt=""
-          />
-        </div>
-      </section>
-      <div className="w-full mt-20 flex justify-between items-center gap-2">
-        <div className="flex justify-center items-center gap-2">
-          <img className="w-2" src={iconTitle} alt="" />
-          <h3 className="text-lg md:text-xl font-extrabold">
-            میوه های پر فروش
-          </h3>
-        </div>
-        <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-3  rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
-          <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
-          <img className="w-3 md:w-4 mt-1 md:mt-2" src={arrowLeft} alt="" />
-        </button>
-      </div>
-      <section className="mt-10 bg-green-primery p-4 rounded-2xl">
-        <div className="w-full overflow-x-scroll snap-mandatory snap-x flex justify-start items-center mt-10 gap-1 scrollbar-custom pb-3 top-10 scrollbar-custom">
-          {products.map((item, index) => (
-            <div
-              key={index}
-              className="slide w-44 md:w-56 h-62 md:h-80 hover:border-green-secondry border-green-primery border-2 shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3"
-            >
-              <img className="h-40 w-full" src={item.img} alt="" />
-              <span className="text-xl">{item.title}</span>
-              <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
-                <div className="flex flex-col justify-start">
-                  <span>هرکیلو</span>
-                  <b>
-                    {item.price}
-                    <span className="text-xs text-gray-500 mr-1.5">تومان</span>
-                  </b>
-                </div>
-                <button className="bg-green-primery p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
-                  <img className="w-6 h-6" src={shop} alt="" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className=""></section>
+      <section></section>
     </main>
   );
 };

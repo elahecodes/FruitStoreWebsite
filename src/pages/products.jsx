@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductsContext } from "./productProvider";
-import shop from "../assets/icons/shopW.png";
+import Product from "./product.jsx";
 import iconTitle from "/src/assets/icons/icon-title.png";
 import iconFilter from "/src/assets/icons/panel.png";
 import title from "/src/assets/icons/tag.png";
-import { Link } from "react-router-dom";
+
 const Products = () => {
-  const { products } = useContext(ProductsContext);
+  const Data = useContext(ProductsContext);
 
   let increment = 12;
 
@@ -14,7 +15,6 @@ const Products = () => {
   const [showProducts, setShowProducts] = useState([]);
   const [active, setActive] = useState([false, null]);
   const [open, setOpen] = useState(false);
-
   const [Tags] = useState(["پرفروش ترین ها", "تخفیف خورده ها", "جدید ترین ها"]);
   const [category] = useState([
     "میوه های استوایی",
@@ -28,13 +28,13 @@ const Products = () => {
   useEffect(() => {
     const start = (startIndex - 1) * increment;
     const end = start + increment;
-    setShowProducts(products.slice(start, end));
-  }, [products, startIndex]);
+    setShowProducts(Data.slice(start, end));
+  }, [Data, startIndex]);
 
   const handleCarts = (number) => {
     setStartIndex(number);
   };
-  let counterOfPages = Math.ceil(products.length / increment);
+  let counterOfPages = Math.ceil(Data.length / increment);
 
   const ActiveBtn = (number) => {
     setActive(([prev, prevNum]) => [!prev, number]);
@@ -49,7 +49,7 @@ const Products = () => {
             <div className="fixed md:hidden w-[90%] h-[80%] overflow-y-scroll top-5 right-6.5 z-40 p-3 flex flex-col items-start justify-start gap-2 bg-white border rounded border-gray-200">
               <div className="flex justify-between border w-full items-center gap-2">
                 <div className="w-full flex justify-start items-center">
-                  <img className="w-4" src={iconFilter} alt="" />
+                  <img className="w-4" src={iconFilter} />
                   <h4>فیلتربندی محصولات</h4>
                 </div>
                 <button onClick={() => setOpen(false)} className="float-left">
@@ -58,37 +58,37 @@ const Products = () => {
               </div>
               <section>***************</section>
               <section className="w-full">
-                <form className="w-full flex flex-col gap-3" action="">
+                <form className="w-full flex flex-col gap-3">
                   <div>
                     <h3 className="w-full flex justify-start items-end gap-1 bg-neutral-100 rounded pb-1 px-1.5">
-                      <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                      <img className="w-3 h-3 mb-0.5" src={title} />
                       قیمت
                     </h3>
                   </div>
                   <div>
                     <h3 className="w-full flex justify-start items-end gap-1 bg-neutral-100 rounded pb-1 px-1.5">
-                      <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                      <img className="w-3 h-3 mb-0.5" src={title} />
                       دسته بندی ها
                     </h3>
                     {category.map((item) => {
                       return (
                         <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
                           <h5 className="text-neutral-600 text-sm">{item}</h5>
-                          <input type="checkbox" name="" id="" />
+                          <input type="checkbox" />
                         </label>
                       );
                     })}
                   </div>
                   <div>
                     <h3 className="w-full flex justify-start items-end gap-1 bg-neutral-100 rounded pb-1 px-1.5">
-                      <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                      <img className="w-3 h-3 mb-0.5" src={title} />
                       برند
                     </h3>
                     {brands.map((item) => {
                       return (
                         <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
                           <h5 className="text-neutral-600 text-sm">{item}</h5>
-                          <input type="checkbox" name="" />
+                          <input type="checkbox" />
                         </label>
                       );
                     })}
@@ -144,42 +144,42 @@ const Products = () => {
         )}
         <aside className="hidden md:flex w-1/5 p-2 flex-col items-start justify-start gap-2 bg-white border rounded border-gray-200">
           <div className="flex justify-start items-center gap-2">
-            <img className="w-4" src={iconFilter} alt="" />
+            <img className="w-4" src={iconFilter} />
             <h4>فیلتربندی</h4>
           </div>
           <section>***************</section>
           <section className="w-full">
-            <form className="w-full flex flex-col gap-3" action="">
+            <form className="w-full flex flex-col gap-3">
               <div>
                 <h3 className="w-full flex justify-start items-end gap-1 rounded pb-1 px-1.5">
-                  <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                  <img className="w-3 h-3 mb-0.5" src={title} />
                   قیمت
                 </h3>
               </div>
               <div>
                 <h3 className="w-full flex justify-start items-end gap-1rounded pb-1 px-1.5">
-                  <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                  <img className="w-3 h-3 mb-0.5" src={title} />
                   دسته بندی ها
                 </h3>
                 {category.map((item) => {
                   return (
                     <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
                       <h5 className="text-neutral-600 text-sm">{item}</h5>
-                      <input type="checkbox" name="" id="" />
+                      <input type="checkbox" />
                     </label>
                   );
                 })}
               </div>
               <div>
                 <h3 className="w-full flex justify-start items-end gap-1 rounded pb-1 px-1.5">
-                  <img className="w-3 h-3 mb-0.5" src={title} alt="" />
+                  <img className="w-3 h-3 mb-0.5" src={title} />
                   برند
                 </h3>
                 {brands.map((item) => {
                   return (
                     <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
                       <h5 className="text-neutral-600 text-sm">{item}</h5>
-                      <input type="checkbox" name="" />
+                      <input type="checkbox" />
                     </label>
                   );
                 })}
@@ -245,12 +245,12 @@ const Products = () => {
             onClick={() => setOpen(true)}
             className="border md:hidden rounded border-neutral-200 bg-white px-1 py-2 flex justify-between items-center gap-1.5 float-left mb-5 cursor-pointer"
           >
-            <img className="w-3" src={iconFilter} alt="" />
+            <img className="w-3" src={iconFilter} />
             <span className="text-xs">فیلتر محصولات</span>
           </button>
           <div className="w-full flex justify-between gap-2 mb-2">
             <div className="flex justify-start items-center gap-2">
-              <img className="w-2" src={iconTitle} alt="" />
+              <img className="w-1.5 md:w-2" src={iconTitle} />
               <h2 className="flex justify-center text-sm md:text-lg font-bold gap-0.5">
                 صفحه
                 <span className="text-green-primery underline">محصولات</span>
@@ -259,7 +259,7 @@ const Products = () => {
             <div className="flex justify-center gap-2 items-center">
               {Tags.map((item) => {
                 return (
-                  <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.5rem] md:text-sm px-2">
+                  <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.6rem] md:text-sm px-2">
                     {item}
                   </button>
                 );
@@ -267,40 +267,16 @@ const Products = () => {
             </div>
           </div>
           <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1">
-            {showProducts.map((item, index) => (
-              <Link to={`/productPage/${item.id}`}>
-                <div
-                  key={index}
-                  className="slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
-                >
-                  <img className="w-full" src={item.imgOne} alt="" />
-                  <span className="text-sm md:text-xl">{item.title}</span>
-                  <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
-                    <div className="flex flex-col justify-start">
-                      <span className="text-xs md:text-sm">هرکیلو</span>
-                      <b className="text-xs md:text-sm">
-                        {item.price}
-                        <span className="text-xs text-gray-500 mr-1.5">
-                          تومان
-                        </span>
-                      </b>
-                    </div>
-                    <button className="hidden md:block bg-green-primery p-1 md:p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
-                      <img
-                        className="md:w-6 md:h-6 w-4 h-4"
-                        src={shop}
-                        alt=""
-                      />
-                    </button>
-                  </div>
-                </div>
-              </Link>
+            {showProducts.map((item) => (
+              <Link to={`/products/${item.id}`}>
+                <Product key={item.id} productData={item} />
+               </Link>
             ))}
           </div>
           <div className="buttonsContainer w-full flex justify-center items-center gap-2">
             {Array.from({ length: counterOfPages }).map((_, index) => (
               <button
-                className={`my-8 rounded-md p-1.5 text-lg cursor-pointer w-12 h-12 hover:bg-green-primery hover:text-white  transition-all ${
+                className={`my-8 flex justify-center items-center text-[0.7rem] md:text-[1rem] rounded md:rounded-md p-1.5 text-lg cursor-pointer w-6 h-6 md:w-12 md:h-12 hover:bg-green-primery hover:text-white transition-all ${
                   startIndex === index + 1
                     ? "bg-green-primery text-white"
                     : "bg-neutral-300 text-neutral-800"
