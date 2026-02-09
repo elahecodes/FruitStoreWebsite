@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContextProvider.jsx";
 import Cart from "../helper/Cart.jsx";
+import Pay from "../components/pay.jsx";
 
 const emptyCart = (state, id) => {
   if (state.selectedItems.findIndex((item) => item.id == id)) {
@@ -8,7 +9,7 @@ const emptyCart = (state, id) => {
   }
 };
 const ShopCart = () => {
-  const { state, dispatch } = useContext(CartContext);
+  const { state } = useContext(CartContext);
   return (
     <div className="my-24 flex flex-col justify-between items-start gap-6">
       <div className="font-bold text-xl">
@@ -20,15 +21,7 @@ const ShopCart = () => {
             <Cart key={item.id} Data={item} />
           ))}
         </section>
-        <section className="w-1/4 bg-white h-52 border-neutral-200 border rounded-md px-2">
-          <div>
-            <span>قیمت کل :</span>
-            <span className="font-bold">{state.total}</span>
-          </div>
-          <button className="bg-green-primery text-white w-full py-1.5 rounded-md">
-            پرداخت
-          </button>
-        </section>
+        <Pay  state={state} />
       </div>
     </div>
   );

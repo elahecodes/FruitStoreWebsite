@@ -6,7 +6,7 @@ const Product = ({ productData }) => {
       key={productData?.id}
       className="slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
     >
-      <img className="w-full" src={productData?.imageOne} alt="image" />
+      <img className="w-full" src={productData?.imgOne} alt="image" />
       <span className="text-sm md:text-xl">{productData?.title}</span>
       <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
         <div className="flex flex-col justify-start">

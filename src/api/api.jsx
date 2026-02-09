@@ -4,4 +4,9 @@ const GetProducts = async () => {
   return response;
 };
 
-export { GetProducts };
+const GetBlogs = async ()=>{
+  const response = await fetch('/src/data/blogs.json').then(res => res.json())
+  return response;
+}
+
+export { GetProducts , GetBlogs };

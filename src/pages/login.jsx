@@ -1,12 +1,29 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import verificationCode from "./verificationCode";
-import { useNavigate } from "react-router-dom";
-
 import encryptedPhone from "../assets/images/encryptedPhone.png";
 
 const login = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    const input = e.target.value;
+    setValue(input.replace(/[^a-zA-Z0-9@._]/g, ""));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
+      value,
+    );
+    const inNumber = /^09\d{9}$/.test(value);
+
+    if (isEmail && inNumber) {
+      alert("error");
+      return;
+    }
+    navigate("/verificationCode");
+  };
   return (
     <div className="w-full flex justify-center items-center mt-6 rounded-2xl">
       <div className="w-full md:w-1/2 flex justify-center flex-col items-center gap-10 h-[40rem]">
@@ -23,6 +40,8 @@ const login = () => {
               className="input bg-white w-full h-12 outline-none border border-orange rounded px-2"
               placeholder=" "
               type="text"
+              onChange={handleChange}
+              value={value}
             />
             <label
               className="absolute text-[0.7rem] text-neutral-500 px-2 bottom-4 right-4 h-5 transition-all"
@@ -32,10 +51,8 @@ const login = () => {
             </label>
           </div>
           <button
-            onClick={(e) => {
-              Navigate("/verificationCode");
-              e.stopPropagation();
-            }}
+            type="submit"
+            onClick={handleSubmit}
             className="bg-orange h-12 w-full rounded cursor-pointer text-white"
           >
             ارسال کد

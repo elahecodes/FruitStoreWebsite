@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "./CartContextProvider.jsx";
 import { isInCart } from "../helper/functions.js";
 import { quantityCount } from "../helper/functions.js";
+
 // --------------------------------------------------------------
 import star from "/src/assets/icons/star.png";
 import share from "/src/assets/icons/share.png";
@@ -13,6 +14,7 @@ import view from "/src/assets/images/view.png";
 import benefits from "/src/assets/images/benefits.png";
 import usage from "/src/assets/images/usage.png";
 import tongue from "/src/assets/images/tongue.png";
+import trash from '/src/assets/icons/trash.png'
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -34,25 +36,25 @@ const ProductPage = () => {
       if (prev <= 0) {
         return 0;
       } else {
-        prev - 1;
+      return  prev - 1;
       }
-      dispatch({ type: "DECREASE", payload: product });
     });
+    dispatch({ type: "DECREASE", payload: product });
   }
 
-  useEffect(() => {}, [state.itemsCounter]);
+  function addToCart() {
+    setCounter((prev) => prev + 1);
+    dispatch({ type: "ADD_ITEM", payload: product });
+  }
+
   useEffect(() => {
     setURL(id);
   }, [id]);
 
   useEffect(() => {
     setSelectedImg(product?.imgOne);
-  });
+  },[product]);
 
-  useEffect(() => {
-    saveComment.userName = "";
-    saveComment.userComment = "";
-  }, []);
 
   function addComment(e) {
     e.preventDefault();
@@ -214,16 +216,14 @@ const ProductPage = () => {
               ) : (
                 <button
                   className="bg-orange hover:cursor-pointer hover:bg-orange-400 transition-all px-2 py-2 text-sm rounded-md text-white"
-                  onClick={() =>
-                    dispatch({ type: "ADD_ITEM", payload: product })
-                  }
+                  onClick={addToCart}
                 >
                   افزودن به سبد خرید
                 </button>
               )}
 
               <span className="w-1/4 flex justify-center border pb-1.5 pt-1 border-neutral-300 rounded cursor-pointer">
-                {counter}
+                {state.itemsCounter}
               </span>
               {quantityCount(state, product?.id) > 1 && (
                 <button
@@ -239,7 +239,7 @@ const ProductPage = () => {
                     dispatch({ type: "REMOVE-ITEM", payload: product })
                   }
                 >
-                  remove
+                  <img className="w-6 " src={trash} alt="" />
                 </button>
               )}
             </div>

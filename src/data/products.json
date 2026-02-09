@@ -11,7 +11,10 @@
     "imgOne": "/src/assets/images/benana-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 1,
+    "brand": 1,
+    "status": true
   },
   {
     "id": 2,
@@ -25,7 +28,10 @@
     "imgOne": "/src/assets/images/kiwi-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 1,
+    "brand": 2,
+    "status": false
   },
   {
     "id": 3,
@@ -39,7 +45,10 @@
     "imgOne": "/src/assets/images/pamegranate-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 1,
+    "brand": 3,
+    "status": true
   },
   {
     "id": 4,
@@ -53,7 +62,10 @@
     "imgOne": "/src/assets/images/orange-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 1,
+    "brand": 4,
+    "status": false
   },
   {
     "id": 5,
@@ -67,7 +79,10 @@
     "imgOne": "/src/assets/images/strawberries-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 2,
+    "brand": 5,
+    "status": true
   },
   {
     "id": 6,
@@ -81,7 +96,10 @@
     "imgOne": "/src/assets/images/mango-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 2,
+    "brand": 6,
+    "status": true
   },
   {
     "id": 7,
@@ -95,7 +113,10 @@
     "imgOne": "/src/assets/images/grape-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 3,
+    "brand": 2,
+    "status": false
   },
 
   {
@@ -110,7 +131,10 @@
     "imgOne": "/src/assets/images/strawberries-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 4,
+    "brand": 1,
+    "status": false
   },
   {
     "id": 9,
@@ -124,7 +148,10 @@
     "imgOne": "/src/assets/images/mango-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 4,
+    "brand": 4,
+    "status": true
   },
   {
     "id": 10,
@@ -138,7 +165,10 @@
     "imgOne": "/src/assets/images/grape-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 4,
+    "brand": 5,
+    "status": true
   },
   {
     "id": 11,
@@ -152,7 +182,10 @@
     "imgOne": "/src/assets/images/mango-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 3,
+    "brand": 7,
+    "status": false
   },
   {
     "id": 12,
@@ -166,6 +199,9 @@
     "imgOne": "/src/assets/images/grape-one.jpg",
     "imgTwo": "",
     "imgThree": "",
-    "imgFour": ""
+    "imgFour": "",
+    "categories": 3,
+    "brand": 8,
+    "status": true
   }
 ]
