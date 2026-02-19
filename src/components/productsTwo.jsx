@@ -1,10 +1,10 @@
-import React , {useContext} from "react";
+import React, { useContext } from "react";
 import { ProductsContext } from "../pages/productProvider";
 import iconTitle from "/src/assets/icons/icon-title.png";
 import arrowLeft from "/src/assets/icons/arrow-left.png";
 import { Link } from "react-router-dom";
 import shop from "../assets/icons/shopW.png";
-const productsTwo = () => {
+const ProductsTwo = () => {
   const data = useContext(ProductsContext);
   return (
     <div className="mt-10 p-4 rounded-2xl">
@@ -16,18 +16,15 @@ const productsTwo = () => {
           </h3>
         </div>
         <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
-          <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
+          <Link to={'/products?sort=bestseller'} className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </Link>
           <img className="w-3 md:w-4 mt-1 md:mt-" src={arrowLeft} />
         </button>
       </div>
       <div className="p-4 bg-green-primery rounded-2xl mt-6">
         <div className="w-full overflow-x-scroll bg-green-primery gap-1 rounded-xl snap-mandatory snap-x no-scrollbar flex justify-start items-center scrollbar-custom top-10 scrollbar-custom">
           {data.map((item) => (
-            <Link to={`/productPage/${item.id}`}>
-              <div
-                key={item.id}
-                className="slide snap-start w-44 md:w-56 h-62 md:h-80 hover:border-green-secondry border-green-primery border-2 shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3"
-              >
+            <Link key={item.id} to={`/products/${item.id}`}>
+              <div className="slide snap-start w-44 md:w-56 h-62 md:h-80 hover:border-green-secondry border-green-primery border-2 shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3">
                 <div className="w-full h-44 overflow-hidden">
                   <img className="w-full" src={item?.imgOne} alt="image" />
                 </div>
@@ -55,4 +52,4 @@ const productsTwo = () => {
   );
 };
 
-export default productsTwo;
+export default ProductsTwo;

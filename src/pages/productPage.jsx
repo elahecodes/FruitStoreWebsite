@@ -2,9 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "./productProvider";
 import { useParams } from "react-router-dom";
 import { CartContext } from "./CartContextProvider.jsx";
-import { isInCart } from "../helper/functions.js";
 import { quantityCount } from "../helper/functions.js";
-
+import { isInCart } from "../helper/functions.js";
 // --------------------------------------------------------------
 import star from "/src/assets/icons/star.png";
 import share from "/src/assets/icons/share.png";
@@ -14,7 +13,7 @@ import view from "/src/assets/images/view.png";
 import benefits from "/src/assets/images/benefits.png";
 import usage from "/src/assets/images/usage.png";
 import tongue from "/src/assets/images/tongue.png";
-import trash from '/src/assets/icons/trash.png'
+import trash from "/src/assets/icons/trash.png";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -36,7 +35,7 @@ const ProductPage = () => {
       if (prev <= 0) {
         return 0;
       } else {
-      return  prev - 1;
+        return prev - 1;
       }
     });
     dispatch({ type: "DECREASE", payload: product });
@@ -53,8 +52,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     setSelectedImg(product?.imgOne);
-  },[product]);
-
+  }, [product]);
 
   function addComment(e) {
     e.preventDefault();
@@ -174,29 +172,7 @@ const ProductPage = () => {
               ></button>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <h4>انتخاب سایز</h4>
-            <div className="flex justify-start items-center gap-1.5">
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                36
-              </button>
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                40
-              </button>
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                42
-              </button>
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                46
-              </button>
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                48
-              </button>
-              <button className="bg-neutral-200 rounded w-10 h-10 cursor-pointer hover:bg-neutral-300">
-                80
-              </button>
-            </div>
-          </div>
+
           <div className="w-full flex justify-between items-center">
             <span>قیمت:</span>
             <div className="flex justify-center items-center gap-2">
@@ -209,7 +185,7 @@ const ProductPage = () => {
               {isInCart(state, product?.id) ? (
                 <button
                   className="bg-neutral-100 w-1/4 h-9 hover:cursor-pointer hover:bg-neutral-200 transition-all rounded-md"
-                  onClick={plus}
+                  onClick={() => plus()}
                 >
                   +
                 </button>
@@ -223,7 +199,7 @@ const ProductPage = () => {
               )}
 
               <span className="w-1/4 flex justify-center border pb-1.5 pt-1 border-neutral-300 rounded cursor-pointer">
-                {state.itemsCounter}
+                {state.itemsCounter == 0 ? 0 : counter}
               </span>
               {quantityCount(state, product?.id) > 1 && (
                 <button
@@ -236,7 +212,7 @@ const ProductPage = () => {
               {quantityCount(state, product?.id) === 1 && (
                 <button
                   onClick={() =>
-                    dispatch({ type: "REMOVE-ITEM", payload: product })
+                    dispatch({ type: "DECREASE", payload: product })
                   }
                 >
                   <img className="w-6 " src={trash} alt="" />

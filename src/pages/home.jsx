@@ -1,54 +1,72 @@
-import Comments from "../components/comments";
-import Brands from "../components/Brands";
-import Categories from "../components/Categories";
-import ProductsOne from "../components/ProductsOne";
-import ProductsTwo from "../components/productsTwo";
-import ProductsThree from "../components/productsThree";
-import ProductsFour from "../components/ProductsFour";
-import Services from "../components/services";
-import Banner from "../components/Banner";
+import { lazy, Suspense } from "react";
+import { useInView } from "react-intersection-observer";
+
+const Comments = lazy(() => import("../components/Comments"));
+const Brands = lazy(() => import("../components/Brands"));
+const Categories = lazy(() => import("../components/Categories"));
+const ProductsOne = lazy(() => import("../components/ProductsOne"));
+const ProductsTwo = lazy(() => import("../components/productsTwo"));
+const ProductsThree = lazy(() => import("../components/ProductsThree"));
+const ProductsFour = lazy(() => import("../components/ProductsFour"));
+const Services = lazy(() => import("../components/Services"));
+const Banner = lazy(() => import("../components/Banner"));
+const BlogsPage = lazy(() => import("../components/BlogsPage"));
+const SectionLoader = () => (
+  <div className="w-full h-40 flex justify-center items-center">
+    <div className="animate-pulse text-gray-800">در حال بارگذاری...</div>
+  </div>
+);
+
+const LazySection = ({ children }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "200px",
+  });
+
+  return (
+    <section ref={ref}>
+      {inView ? (
+        <Suspense fallback={<SectionLoader />}>{children}</Suspense>
+      ) : (
+        <SectionLoader />
+      )}
+    </section>
+  );
+};
+
 const Home = () => {
   return (
-    <main className="mb-20">
-      <button className="flex justify-start items-center gap-1.5 md:mt-30 cursor-pointer">
-        <svg fill="#404040" viewBox="0 0 512 512" width="20" height="20">
-          <g id="_01_align_center">
-            <path d="M255.104,512.171l-14.871-12.747C219.732,482.258,40.725,327.661,40.725,214.577c0-118.398,95.981-214.379,214.379-214.379   s214.379,95.981,214.379,214.379c0,113.085-179.007,267.682-199.423,284.932L255.104,512.171z M255.104,46.553   c-92.753,0.105-167.918,75.27-168.023,168.023c0,71.042,110.132,184.53,168.023,236.473   c57.892-51.964,168.023-165.517,168.023-236.473C423.022,121.823,347.858,46.659,255.104,46.553z" />
-            <path d="M255.104,299.555c-46.932,0-84.978-38.046-84.978-84.978s38.046-84.978,84.978-84.978s84.978,38.046,84.978,84.978   S302.037,299.555,255.104,299.555z M255.104,172.087c-23.466,0-42.489,19.023-42.489,42.489s19.023,42.489,42.489,42.489   s42.489-19.023,42.489-42.489S278.571,172.087,255.104,172.087z" />
-          </g>
-        </svg>
-
-        <h3 className="text-neutral-600 text-sm">
-          ارسال به استان خوزستان شهر اهواز
-        </h3>
-      </button>
-      <section>
+    <main className="mb-20 mt-20">
+      <LazySection>
         <Banner />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <Services />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <Categories />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <ProductsOne />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <ProductsThree />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <ProductsTwo />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <ProductsFour />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <Brands />
-      </section>
-      <section>
+      </LazySection>
+      <LazySection>
         <Comments />
-      </section>
+      </LazySection>
+      <LazySection>
+        <BlogsPage/>
+      </LazySection>
     </main>
   );
 };

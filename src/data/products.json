@@ -31,7 +31,8 @@
     "imgFour": "",
     "categories": 1,
     "brand": 2,
-    "status": false
+    "status": false,
+    "bestseller" : true
   },
   {
     "id": 3,
@@ -48,7 +49,8 @@
     "imgFour": "",
     "categories": 1,
     "brand": 3,
-    "status": true
+    "status": true,
+    "off" : true
   },
   {
     "id": 4,

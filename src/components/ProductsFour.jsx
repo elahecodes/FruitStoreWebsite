@@ -12,21 +12,18 @@ const ProductsFour = () => {
         <div className="flex justify-center items-center gap-2">
           <img className="w-2" src={iconTitle} />
           <h3 className="text-lg md:text-2xl font-lalezar text-neutral-800">
-            میوه های پر فروش
+            محصولات تخفیف خورده
           </h3>
         </div>
         <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
-          <span className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </span>
+          <Link to={'/products?sort=offer'} className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </Link>
           <img className="w-3 md:w-4 mt-1 md:mt-1" src={arrowLeft} />
         </button>
       </div>
       <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-1 md:gap-3">
         {data.map((item) => (
-          <Link to={`/productPage/${item.id}`}>
-            <div
-              key={item.id}
-              className="slide snap-start hover:border-orange transition-all cursor-pointer border shrink-0 border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 md:gap-3"
-            >
+          <Link key={item.id} to={`/products/${item.id}`}>
+            <div className="slide snap-start hover:border-orange transition-all cursor-pointer border shrink-0 border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 md:gap-3">
               <div className="h-40 overflow-hidden">
                 <img className="w-full" src={item.imgOne} />
               </div>

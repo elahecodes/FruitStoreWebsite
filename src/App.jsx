@@ -1,6 +1,5 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Blogs from "./pages/blogs.jsx";
 import Home from "./pages/home.jsx";
 import Login from "./pages/login.jsx";
 import MainLayout from "./pages/mainLayout.jsx";
@@ -11,21 +10,23 @@ import Products from "./pages/products.jsx";
 import ProductsProvider from "./pages/productProvider.jsx";
 import CartContextProvider from "./pages/CartContextProvider.jsx";
 import Product from "./pages/product.jsx";
-import ShopCart from "./pages/shopCart.jsx";
-
+import ShopCart from "./pages/ShopCart.jsx";
+import BlogsProvider from "./components/BlogsProvider.jsx";
+import BlogsPage from "./components/BlogsPage.jsx";
 function App() {
   return (
     <ProductsProvider>
       <CartContextProvider>
+        <BlogsProvider>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogsPage" element={<BlogsPage />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/shopcart" element={<ShopCart/>} />
+            <Route path="/shopcart" element={<ShopCart />} />
           </Route>
 
           <Route element={<AuthLayout />}>
@@ -33,7 +34,8 @@ function App() {
             <Route path="/verificationCode" element={<VerificationCode />} />
           </Route>
         </Routes>
-        </CartContextProvider>
+        </BlogsProvider>
+      </CartContextProvider>
     </ProductsProvider>
   );
 }

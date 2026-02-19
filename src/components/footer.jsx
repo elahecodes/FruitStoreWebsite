@@ -10,7 +10,28 @@ import category from "../assets/icons/category.png";
 
 const Footer = () => {
   const location = useLocation();
-  const pagesBtn = ["خانه", "وبلاگ ها", "درباره ما", "محصولات", "پیگیری سفارش"];
+  const pagesBtn = [
+    {
+      url: "/home",
+      title: "خانه",
+    },
+    {
+      url: "/blogsPage",
+      title: "وبلاگ ها",
+    },
+    {
+      url: "/products",
+      title: "محصولات",
+    },
+    {
+      url: "/about",
+      title: "درباره فروشگاه",
+    },
+    {
+      url: "/login",
+      title: "ورود",
+    },
+  ];
   const categoriesBtn = [
     "میوه های استوایی",
     "میوه فصل",
@@ -149,7 +170,7 @@ const Footer = () => {
           <path d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z" />
         </svg>
       ),
-      ads: "/shop",
+      ads: "/ShopCart",
     },
     {
       selectedIcon: (
@@ -195,6 +216,7 @@ const Footer = () => {
           );
         })}
       </ul>
+
       <div className="hidden w-full h-full md:flex justify-between items-start gap-20">
         <div className="w-1/4">
           <div className="w-full h-8">
@@ -215,8 +237,8 @@ const Footer = () => {
           <ul className="mt-5 flex flex-col justify-center items-start gap-3">
             {pagesBtn.map((item, index) => (
               <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
-                  {item}
+                <Link to={item.url} className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                  {item.title}
                 </Link>
               </li>
             ))}

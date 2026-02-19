@@ -12,6 +12,22 @@ const Products = () => {
   const Data = useContext(ProductsContext);
   const [serchParams] = useSearchParams();
   const categoryFormURL = serchParams.get("category");
+  const bestSellingProducts = serchParams.get("sort");
+  const offer = serchParams.get("sort");
+
+  useEffect(() => {
+    if (bestSellingProducts == "bestseller") {
+      const bestSeller = Data.filter((product) => product.bestSeller == true);
+      setShowProducts(bestSeller);
+    }
+  }, [bestSellingProducts]);
+
+  useEffect(() => {
+    if (offer == "offer") {
+      const offer = Data.filter((product) => product.off == true);
+      setShowProducts(offer);
+    }
+  }, [offer]);
 
   let increment = 6;
   useEffect(() => {
@@ -28,6 +44,7 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const [Tags] = useState(["پرفروش ترین ها", "تخفیف خورده ها", "جدید ترین ها"]);
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     fetch("/src/data/gategories.json")
       .then((res) => res.json())
@@ -50,7 +67,7 @@ const Products = () => {
   let counterOfPages = Math.ceil(Data.length / increment);
 
   const ActiveBtn = (number) => {
-    setActive(([prev]) => [!prev, number]);
+    setActive((prev) => [!prev[0], number]);
   };
 
   function userSelectionC(category) {
@@ -67,6 +84,10 @@ const Products = () => {
         : [...prev, brand],
     );
   }
+  function bestSeller() {
+    const bestSeller = Data.filter((product) => product.bestSeller == true);
+    setShowProducts(bestSeller);
+  }
 
   function applyFilter() {
     const filtered = Data.filter((item) => {
@@ -78,9 +99,10 @@ const Products = () => {
           ? true
           : categotySelected.includes(item.categories);
 
-      return categoryCondition && brandCondition;
-    });
-    setShowProducts(filtered);
+          
+          return categoryCondition && brandCondition;
+        });
+        setShowProducts(filtered.slice(startIndex - 1, increment));
   }
 
   return (
@@ -110,9 +132,12 @@ const Products = () => {
                   <img className="w-3 h-3 mb-0.5" src={title} />
                   دسته بندی ها
                 </h3>
-                {categories.map((item) => {
+                {categories.map((item, index) => {
                   return (
-                    <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
+                    <label
+                      key={index}
+                      className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer"
+                    >
                       <h5 className="text-neutral-600 text-sm">{item.title}</h5>
                       <input
                         checked={categotySelected.includes(item.id)}
@@ -130,7 +155,10 @@ const Products = () => {
                 </h3>
                 {brands.map((item, index) => {
                   return (
-                    <label className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer">
+                    <label
+                      key={index}
+                      className="w-full hover:bg-green-primery/10 hover:p-1 rounded transition-all flex justify-between items-center h-9 cursor-pointer"
+                    >
                       <h5 className="text-neutral-600 text-sm">{item}</h5>
                       <input
                         onChange={() => userSelectionB(index + 1)}
@@ -192,7 +220,7 @@ const Products = () => {
                   onClick={() => {
                     setCategotySelected([]);
                     setBrandSelected([]);
-                    setShowProducts(Data);
+                    setShowProducts(Data.slice(startIndex - 1, increment));
                   }}
                   className="text-xs lg:text-sm w-full lg:w-1/2 pb-2 pt-1.5 rounded-md bg-neutral-300 hover:bg-neutral-200 font-bold cursor-pointer transition-all text-neutral-800"
                   type="reset"
@@ -220,25 +248,31 @@ const Products = () => {
               </h2>
             </div>
             <div className="flex justify-center gap-2 items-center">
-              {Tags.map((item) => {
-                return (
-                  <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.6rem] md:text-sm px-2">
-                    {item}
-                  </button>
-                );
-              })}
+              <button
+                onClick={bestSeller}
+                className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.6rem] md:text-sm px-2"
+              >
+                پرفروش ترین ها
+              </button>
+              <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.6rem] md:text-sm px-2">
+                پرفروش ترین ها
+              </button>
+              <button className="tag cursor-pointer hover:bg-neutral-300 transition-all text-neutral-800 bg-neutral-200 rounded-4xl h-8 text-[0.6rem] md:text-sm px-2">
+                پرفروش ترین ها
+              </button>
             </div>
           </div>
           <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1">
             {showProducts.map((item) => (
-              <Link to={`/products/${item.id}`}>
-                <Product key={item.id} productData={item} />
+              <Link key={item.id} to={`/products/${item.id}`}>
+                <Product productData={item} />
               </Link>
             ))}
           </div>
           <div className="buttonsContainer w-full flex justify-center items-center gap-2">
             {Array.from({ length: counterOfPages }).map((_, index) => (
               <button
+                key={index}
                 className={`my-8 flex justify-center items-center text-[0.7rem] md:text-[1rem] rounded md:rounded-md p-1.5 text-lg cursor-pointer w-6 h-6 md:w-12 md:h-12 hover:bg-green-primery hover:text-white transition-all ${
                   startIndex === index + 1
                     ? "bg-green-primery text-white"
