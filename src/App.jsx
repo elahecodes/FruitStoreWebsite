@@ -13,6 +13,7 @@ import Product from "./pages/product.jsx";
 import ShopCart from "./pages/ShopCart.jsx";
 import BlogsProvider from "./components/BlogsProvider.jsx";
 import BlogsPage from "./components/BlogsPage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
 function App() {
   return (
     <ProductsProvider>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/blogsPage" element={<BlogsPage />} />
+            <Route path="/blogsPage/:id" element={<BlogPage />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/product" element={<Product />} />

@@ -10,7 +10,7 @@ const ProductsThree = lazy(() => import("../components/ProductsThree"));
 const ProductsFour = lazy(() => import("../components/ProductsFour"));
 const Services = lazy(() => import("../components/Services"));
 const Banner = lazy(() => import("../components/Banner"));
-const BlogsPage = lazy(() => import("../components/BlogsPage"));
+
 const SectionLoader = () => (
   <div className="w-full h-40 flex justify-center items-center">
     <div className="animate-pulse text-gray-800">در حال بارگذاری...</div>
@@ -64,9 +64,7 @@ const Home = () => {
       <LazySection>
         <Comments />
       </LazySection>
-      <LazySection>
-        <BlogsPage/>
-      </LazySection>
+     
     </main>
   );
 };

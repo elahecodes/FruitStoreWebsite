@@ -60,7 +60,9 @@ const BlogsPage = () => {
       </div>
       <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 ">
         {showBlogs.map((item) => (
-          <Blog item={item} />
+          <Link to={`/blogsPage/${item.id}`}>
+            <Blog item={item} />
+          </Link>
         ))}
       </div>
       <div className="buttonsContainer w-full flex justify-center items-center gap-2">
