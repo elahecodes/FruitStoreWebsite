@@ -20,7 +20,7 @@ const ProductsFour = () => {
           <img className="w-3 md:w-4 mt-1 md:mt-1" src={arrowLeft} />
         </button>
       </div>
-      <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-1 md:gap-3">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 md:gap-3">
         {data.map((item) => (
           <Link key={item.id} to={`/products/${item.id}`}>
             <div className="slide snap-start hover:border-orange transition-all cursor-pointer border shrink-0 border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 md:gap-3">

@@ -92,19 +92,13 @@
 
 /* استایل برای body */
 body {
-  @apply bg-bg px-12 py-5;
+  @apply bg-bg px-3 py-5;
 }
 
 @media screen and (max-width: 1200px) {
   .scrollbar-custom::-webkit-scrollbar-track {
     margin-left: 10rem;
     margin-right: 10rem;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  body {
-    padding: 0.5rem;
   }
 }
 

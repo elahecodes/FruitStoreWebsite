@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../pages/CartContextProvider";
 import { Link, useLocation } from "react-router-dom";
 import instagram from "../assets/icons/instagram.png";
 import whatsApp from "../assets/icons/whatsApp.png";
@@ -9,6 +10,8 @@ import volume from "../assets/icons/volume.png";
 import category from "../assets/icons/category.png";
 
 const Footer = () => {
+  const { state } = useContext(CartContext);
+  const cartCount = state.itemsCounter;
   const location = useLocation();
   const pagesBtn = [
     {
@@ -100,7 +103,7 @@ const Footer = () => {
           <path d="M19,2H5C2.24,2,0,4.24,0,7v10c0,2.76,2.24,5,5,5h7c.55,0,1-.45,1-1s-.45-1-1-1H5c-1.65,0-3-1.35-3-3V9H22v5c0,.55,.45,1,1,1s1-.45,1-1V7c0-2.76-2.24-5-5-5ZM2,7c0-1.65,1.35-3,3-3h14c1.65,0,3,1.35,3,3H2Zm14.41,5.17c-.76-.76-1.76-1.17-2.83-1.17h-1.59c-.55,0-1,.45-1,1v1.59c0,1.07,.42,2.07,1.17,2.83l6.71,6.71c.57,.57,1.32,.88,2.12,.88s1.55-.31,2.12-.88,.88-1.32,.88-2.12-.31-1.55-.88-2.12l-6.71-6.71Zm5.29,9.54c-.38,.38-1.04,.38-1.41,0l-6.71-6.71c-.38-.38-.59-.88-.59-1.41v-.59h.59c.53,0,1.04,.21,1.41,.59l6.71,6.71c.19,.19,.29,.44,.29,.71s-.1,.52-.29,.71Z" />
         </svg>
       ),
-      ads: "/blogs",
+      ads: "/blogsPage",
     },
     {
       selectedIcon: (
@@ -202,76 +205,88 @@ const Footer = () => {
       ads: "/login",
     },
   ];
+  console.log(cartCount);
+  
   return (
     <footer className="flex fixed bottom-0 w-full h-16 md:h-64 md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:bottom-0 md:rounded-xl right-0 md:p-4">
       <ul className="md:hidden w-full h-full flex justify-between items-center px-4">
         {data.map((item, index) => {
+          const isCart = item.ads === "/ShopCart";
           const isActive = location.pathname === item.ads;
           return (
-            <li key={index}>
+            <li key={index} className="relative flex justify-center items-center h-4">
               <Link to={item.ads}>
                 {isActive ? item.selectedIcon : item.icon}
+
+                {isCart && cartCount >= 0 && (
+                  <div className="absolute top-0 z-30 -right-2 bg-orange text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full shadow animate-bounce">{cartCount}</div>
+                )}
               </Link>
             </li>
           );
         })}
       </ul>
 
-      <div className="hidden w-full h-full md:flex justify-between items-start gap-20">
-        <div className="w-1/4">
-          <div className="w-full h-8">
-            <img src="" alt="" />
-            <h4 className="text-white">فروشگاه</h4>
+      <div className="hidden border w-full h-full md:flex justify-between items-start gap-20">
+        <div className="w-full">
+          <div className="w-1/4 border">
+            <div className="w-full h-8">
+              <img src="" alt="" />
+              <h4 className="text-white">فروشگاه</h4>
+            </div>
+            <p className="w-full text-justify text-neutral-200">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio animi repellendus numquam ut unde. Totam libero,
+              expedita voluptatum eveniet autem sapiente natus maiores ullam
+              quae deleniti adipisci laboriosam corrupti esse.
+            </p>
           </div>
-          <p className="w-full text-justify text-neutral-200">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            animi repellendus numquam ut unde. Totam libero, expedita voluptatum
-            eveniet autem sapiente natus maiores ullam quae deleniti adipisci
-            laboriosam corrupti esse.
-          </p>
-        </div>
-        <div>
-          <h5 className="flex justify-start items-center text-white font-bold gap-1">
-            <img className="w-4 h-4" src={link} alt="" /> لینک‌های مهم
-          </h5>
-          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
-            {pagesBtn.map((item, index) => (
-              <li key={index}>
-                <Link to={item.url} className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h5 className="flex justify-start items-center text-white font-bold gap-1">
-            <img className="w-4 h-4" src={category} alt="" /> دسته بندی ها
-          </h5>
-          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
-            {categoriesBtn.map((item, index) => (
-              <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h5 className="flex justify-start items-center text-white font-bold gap-1">
-            <img className="w-4 h-4" src={support} alt="" />
-            پشتیبانی و خدمات
-          </h5>
-          <ul className="mt-5 flex flex-col justify-center items-start gap-3">
-            {supportBtn.map((item, index) => (
-              <li key={index}>
-                <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <h5 className="flex justify-start items-center text-white font-bold gap-1">
+              <img className="w-4 h-4" src={link} alt="" /> لینک‌های مهم
+            </h5>
+            <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+              {pagesBtn.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    to={item.url}
+                    className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="border">
+            <h5 className="flex justify-start items-center text-white font-bold gap-1">
+              <img className="w-4 h-4" src={category} alt="" /> دسته بندی ها
+            </h5>
+            <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+              {categoriesBtn.map((item, index) => (
+                <li key={index}>
+                  <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h5 className="flex justify-start items-center text-white font-bold gap-1">
+              <img className="w-4 h-4" src={support} alt="" />
+              پشتیبانی و خدمات
+            </h5>
+            <ul className="mt-5 flex flex-col justify-center items-start gap-3">
+              {supportBtn.map((item, index) => (
+                <li key={index}>
+                  <Link className="text-neutral-200 text-sm relative before:content-[''] before:hidden hover:before:block before:w-2 before:h-2 before:bg-green-secondry before:rounded-full flex justify-start items-center gap-1 hover:before:transition-all">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="w-1/4 flex flex-col justify-between items-start h-full">
           <form className="w-full flex flex-col justify-start gap-5" action="">

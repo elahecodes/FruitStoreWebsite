@@ -33,32 +33,34 @@ const BlogsPage = () => {
   };
 
   return (
-    <div className="mt-20">
-      <div className="flex justify-between items-center mb-8">
+    <div className="md:mt-20 mb-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center items-start mb-8">
         <h2 className="w-1/4">وبلاگ ها</h2>
-        <form className="w-2/4" action="">
-          <input
-            onChange={filterBlogs}
-            className=" w-full h-10 rounded-full bg-neutral-100 border border-neutral-200 hover:bg-neutral-100 hover:border-none transition-all px-3 text-sm text-neutral-800 outline-none"
-            maxLength={100}
-            minLength={5}
-            placeholder="جستجو"
-            type="text"
-            name=""
-            id=""
-            ref={inputValue}
-          />
-        </form>
-        <div className="w-1/4 flex justify-end items-center gap-1.5">
-          <button className="bg-neutral-100 text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all px-2 h-10 p-1 border border-neutral-200 rounded-full cursor-pointer">
-            جدیدترین ها
-          </button>
-          <button className="bg-neutral-100 text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all px-2 h-10 p-1 border border-neutral-200 rounded-full cursor-pointer">
-            پربازدیدترین ها
-          </button>
+        <div className="w-3/4 flex justify-center items-center">
+          <form className="" action="">
+            <input
+              onChange={filterBlogs}
+              className="md:w-full h-10 rounded-md bg-white border border-neutral-200 hover:bg-neutral-100 hover:border-none transition-all px-3 text-sm text-neutral-800 outline-none"
+              maxLength={100}
+              minLength={5}
+              placeholder="جستجو"
+              type="text"
+              name=""
+              id=""
+              ref={inputValue}
+            />
+          </form>
+          <div className=" flex justify-end items-center gap-1.5">
+            <button className="bg-white text-sm md:text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all md:px-2 h-10 md:p-1 border border-neutral-200 rounded-md cursor-pointer">
+              جدیدترین ها
+            </button>
+            <button className="bg-white text-sm md:text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all md:px-2 h-10 md:p-1 border border-neutral-200 rounded-md cursor-pointer">
+              پربازدیدترین ها
+            </button>
+          </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 ">
+      <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 ">
         {showBlogs.map((item) => (
           <Link to={`/blogsPage/${item.id}`}>
             <Blog item={item} />

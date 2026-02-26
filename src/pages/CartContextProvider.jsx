@@ -10,11 +10,11 @@ const initialState = {
 const sumItems = (item) => {
   const itemsCounter = item.reduce(
     (total, product) => total + product.quantity,
-    0
+    0,
   );
   const total = item.reduce(
-    (total, product) => total + (product.price * product.quantity),
-    0
+    (total, product) => total + product.price * product.quantity,
+    0,
   );
   return { itemsCounter, total };
 };
@@ -35,7 +35,7 @@ const cartReducer = (state, action) => {
 
     case "INCREASE":
       const indexI = state.selectedItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id,
       );
       state.selectedItems[indexI].quantity++;
       return {
@@ -44,7 +44,7 @@ const cartReducer = (state, action) => {
       };
     case "REMOVE-ITEM":
       const newSelectedItem = state.selectedItems.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.id !== action.payload.id,
       );
       return {
         ...state,
@@ -53,10 +53,14 @@ const cartReducer = (state, action) => {
       };
     case "DECREASE":
       const indexD = state.selectedItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id,
       );
 
       state.selectedItems[indexD].quantity--;
+
+      if (state.selectedItems[indexD].quantity === 0) {
+        state.selectedItems.splice(indexD, 1);
+      }
 
       return {
         ...state,

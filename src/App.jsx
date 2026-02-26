@@ -14,6 +14,7 @@ import ShopCart from "./pages/ShopCart.jsx";
 import BlogsProvider from "./components/BlogsProvider.jsx";
 import BlogsPage from "./components/BlogsPage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
+
 function App() {
   return (
     <ProductsProvider>
