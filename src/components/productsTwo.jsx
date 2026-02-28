@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import shop from "../assets/icons/shopW.png";
 const ProductsTwo = () => {
   const data = useContext(ProductsContext);
+  const products = data.slice(0,10); 
   return (
     <div className="mt-10 p-4 rounded-2xl">
       <div className="w-full flex justify-between items-center gap-2 bg-white px-2 py-1.5 rounded border border-neutral-100">
@@ -16,13 +17,13 @@ const ProductsTwo = () => {
           </h3>
         </div>
         <button className="bg-orange text-white px-2 py-1 pb-2 md:pb-2 rounded-md shadow-lg shadow-orange/80 flex justify-between items-center gap-3 cursor-pointer">
-          <Link to={'/products?sort=bestseller'} className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </Link>
+          <Link to={'/products?isbest=bestseller'} className="text-[0.8rem] md:text-[1rem]">مشاهده بیشتر </Link>
           <img className="w-3 md:w-4 mt-1 md:mt-" src={arrowLeft} />
         </button>
       </div>
       <div className="p-4 bg-green-primery rounded-2xl mt-6">
         <div className="w-full overflow-x-scroll bg-green-primery gap-1 rounded-xl snap-mandatory snap-x no-scrollbar flex justify-start items-center scrollbar-custom top-10 scrollbar-custom">
-          {data.map((item) => (
+          {products.map((item) => (
             <Link key={item.id} to={`/products/${item.id}`}>
               <div className="slide snap-start w-44 md:w-56 h-62 md:h-80 hover:border-green-secondry border-green-primery border-2 shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 gap-3">
                 <div className="w-full h-44 overflow-hidden">

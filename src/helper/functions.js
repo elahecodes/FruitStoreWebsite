@@ -3,15 +3,8 @@ const isInCart = (state, id) => {
   return result;
 };
 
-const quantityCount = (state, id) => {
-  const index = state.selectedItems.findIndex((item) => item.id === id);
-  if (index === -1) {
-    return false;
-  } else {
-    return state.selectedItems[index].quantity;
-  }
+export const quantityCount = (state, id) => {
+  const item = state.selectedItems.find(item => item.id === id);
+  return item ? item.quantity : 0;
 };
-
-
-
-export { isInCart, quantityCount };
+export { isInCart };

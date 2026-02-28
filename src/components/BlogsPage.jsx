@@ -6,6 +6,16 @@ const BlogsPage = () => {
   const Data = useContext(blogsContext);
   const [showBlogs, setShowBlogs] = useState([]);
   const [startIndex, setStartIndex] = useState(1);
+  const buttons = [
+    {
+      title: "جدیدترین ها",
+      action: () => setShowBlogs([...Data].reverse()),
+    },
+    {
+      title: "پربازدید ترین ها",
+      action: () => setShowBlogs(Data.filter((item) => item.view === true)),
+    },
+  ];
 
   const inputValue = useRef(null);
   const increment = 24;
@@ -22,10 +32,6 @@ const BlogsPage = () => {
 
   const filterBlogs = () => {
     const searchText = inputValue.current.value.toLowerCase();
-    if (!searchText) {
-      setShowBlogs(Data.slice(startIndex, increment));
-      return;
-    }
     const filtervalue = Data.filter((blog) =>
       blog.title.toLowerCase().includes(searchText),
     );
@@ -33,14 +39,25 @@ const BlogsPage = () => {
   };
 
   return (
-    <div className="md:mt-20 mb-10">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center items-start mb-8">
+    <main className="md:mt-24 mb-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center items-start mb-2 md:mb-8">
         <h2 className="w-1/4">وبلاگ ها</h2>
-        <div className="w-3/4 flex justify-center items-center">
-          <form className="" action="">
+        <div className="md:w-3/4 md:flex-row-reverse items-end gap-1.5 w-full flex flex-col justify-center items-center md:gap-1.5">
+          <div className="flex justify-end items-center gap-1.5">
+            {buttons.map((item, index) => (
+              <button
+                onClick={item.action}
+                key={index}
+                className="bg-white w-28 text-sm md:text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all md:px-2 h-10 md:p-1 border border-neutral-200 rounded-md cursor-pointer"
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+          <form className="w-full" action="">
             <input
               onChange={filterBlogs}
-              className="md:w-full h-10 rounded-md bg-white border border-neutral-200 hover:bg-neutral-100 hover:border-none transition-all px-3 text-sm text-neutral-800 outline-none"
+              className="w-full h-10 rounded-md bg-white border border-neutral-200 hover:bg-neutral-100 hover:border-none transition-all px-3 text-sm text-neutral-800 outline-none"
               maxLength={100}
               minLength={5}
               placeholder="جستجو"
@@ -50,14 +67,6 @@ const BlogsPage = () => {
               ref={inputValue}
             />
           </form>
-          <div className=" flex justify-end items-center gap-1.5">
-            <button className="bg-white text-sm md:text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all md:px-2 h-10 md:p-1 border border-neutral-200 rounded-md cursor-pointer">
-              جدیدترین ها
-            </button>
-            <button className="bg-white text-sm md:text-md text-neutral-800 hover:bg-neutral-50 hover:border-none transition-all md:px-2 h-10 md:p-1 border border-neutral-200 rounded-md cursor-pointer">
-              پربازدیدترین ها
-            </button>
-          </div>
         </div>
       </div>
       <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 ">
@@ -81,7 +90,7 @@ const BlogsPage = () => {
           </button>
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ProductsContext } from "./productProvider";
 import { useParams } from "react-router-dom";
 import { CartContext } from "./CartContextProvider.jsx";
@@ -6,41 +6,31 @@ import { quantityCount } from "../helper/functions.js";
 import { isInCart } from "../helper/functions.js";
 import Commentss from "../components/Commentss.jsx";
 // --------------------------------------------------------------
-import star from "/src/assets/icons/star.png";
+
 import share from "/src/assets/icons/share.png";
-import like from "/src/assets/icons/like.png";
 import view from "/src/assets/images/view.png";
 import benefits from "/src/assets/images/benefits.png";
 import usage from "/src/assets/images/usage.png";
 import tongue from "/src/assets/images/tongue.png";
 import trash from "/src/assets/icons/trash.png";
+import Rating from "../components/Rating.jsx";
 
 const ProductPage = () => {
   const { id } = useParams();
   const Data = useContext(ProductsContext);
   const [selectedImg, setSelectedImg] = useState("");
-  
-  const [counter, setCounter] = useState(0);
+
   const { state, dispatch } = useContext(CartContext);
   const product = Data.find((item) => item.id === Number(id));
 
   function plus() {
-    setCounter((prev) => prev + 1);
     dispatch({ type: "INCREASE", payload: product });
   }
   function mines() {
-    setCounter((prev) => {
-      if (prev <= 0) {
-        return 0;
-      } else {
-        return prev - 1;
-      }
-    });
     dispatch({ type: "DECREASE", payload: product });
   }
 
   function addToCart() {
-    setCounter((prev) => prev + 1);
     dispatch({ type: "ADD_ITEM", payload: product });
   }
 
@@ -48,9 +38,12 @@ const ProductPage = () => {
     setSelectedImg(product?.imgOne);
   }, [product]);
 
+  const copyURL = () => {
+    navigator.clipboard.writeText(window.location.href);
+  };
 
   return (
-    <div className="flex flex-col justify-center items-center lg:mt-32 mb-20">
+    <main className="flex flex-col justify-center items-center lg:mt-32 mb-20">
       <section className="flex flex-col lg:flex-row justify-between items-start h-auto w-full gap-2.5">
         <div className="flex flex-col lg:w-1/4 gap-3 h-[30rem] p-2 border border-neutral-200 rounded-2xl justify-between bg-white">
           <img className="w-full rounded-2xl" src={selectedImg} />
@@ -111,52 +104,29 @@ const ProductPage = () => {
           </div>
         </div>
 
-        <div className="lg:w-1/4 border w-full rounded-2xl border-neutral-200 h-[30rem] flex flex-col gap-6 bg-white p-2">
+        <div className="lg:w-1/4 border w-full rounded-2xl border-neutral-200 flex flex-col gap-6 bg-white py-8 p-2">
           <div className="w-full h-8 flex justify-between items-center">
-            <span className="px-3 py-1.5">4.5</span>
-            <img className="w-5 h-5" src={star} />
-            <img className="w-5 h-5" src={star} />
-            <img className="w-5 h-5" src={star} />
-            <img className="w-5 h-5" src={star} />
-            <img className="w-5 h-5" src={star} />
-            <div className="w-full flex justify-end items-center gap-2">
-              <img className="w-5 h-5 cursor-pointer" src={like} />
+            <div className="flex justify-center items-center gap-2">
+              <Rating productID={product?.id} />
+              <span className=" py-1.5">4.5</span>
+            </div>
+            <div
+              onClick={copyURL}
+              className="p-1 cursor-pointer rounded flex justify-end items-center gap-2 bg-neutral-100"
+            >
               <img className="w-5 h-5 cursor-pointer" src={share} />
+              <span>اشتراک گذاری</span>
             </div>
           </div>
           <div>
             <p className="text-sm text-neutral-700"> 90درصد رضایت خرید</p>
           </div>
-          <div className="flex flex-col gap-3">
-            <h4>انتخاب رنگ</h4>
-            <div className="flex justify-start items-center gap-1.5">
-              <button
-                value={"قرمز"}
-                className="w-6 h-6 bg-red-500 rounded-full cursor-pointer"
-              ></button>
-              <button
-                value={"ابی"}
-                className="w-6 h-6 bg-blue-500 rounded-full cursor-pointer"
-              ></button>
-              <button
-                value={"سبز"}
-                className="w-6 h-6 bg-green-500 rounded-full cursor-pointer"
-              ></button>
-              <button
-                value={"زرد"}
-                className="w-6 h-6 bg-yellow-500 rounded-full cursor-pointer"
-              ></button>
-              <button
-                value={"نارنجی"}
-                className="w-6 h-6 bg-orange-500 rounded-full cursor-pointer"
-              ></button>
-            </div>
-          </div>
-
-          <div className="w-full flex justify-between items-center">
+          <div className="w-full flex justify-start gap-2 items-center">
             <span>قیمت:</span>
             <div className="flex justify-center items-center gap-2">
-              <b className="text-2xl text-neutral-700">{product?.price}</b>
+              <b className="text-2xl bg-neutral-100 p-1 rounded-md text-neutral-700">
+                {product?.price}
+              </b>
               <span className="text-neutral-500">تومان</span>
             </div>
           </div>
@@ -179,7 +149,7 @@ const ProductPage = () => {
               )}
 
               <span className="w-1/4 flex justify-center border pb-1.5 pt-1 border-neutral-300 rounded cursor-pointer">
-                {state.itemsCounter == 0 ? 0 : counter}
+                {quantityCount(state, product?.id)}
               </span>
               {quantityCount(state, product?.id) > 1 && (
                 <button
@@ -202,8 +172,8 @@ const ProductPage = () => {
           </div>
         </div>
       </section>
-     <Commentss/>
-    </div>
+      <Commentss />
+    </main>
   );
 };
 

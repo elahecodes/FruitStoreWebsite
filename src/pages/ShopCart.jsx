@@ -7,7 +7,7 @@ import emptyCart from "/src/assets/icons/emptyCart.png";
 const ShopCart = () => {
   const { state } = useContext(CartContext);
   return (
-    <div className="md:my-24 flex flex-col justify-between items-start gap-6">
+    <main className="md:my-24 flex flex-col justify-between items-start gap-6">
       <div className="font-bold text-xl w-full text-center">
         {state.selectedItems.length === 0 ? (
           <div className="flex flex-col justify-center items-center h-72 mt-20 gap-5">
@@ -437,7 +437,7 @@ const ShopCart = () => {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

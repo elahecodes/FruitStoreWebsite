@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import shop from "../assets/icons/shopW.png";
 
 const ProductsOne = () => {
-  const products = useContext(ProductsContext);
+  const products = useContext(ProductsContext).slice(0,10)
 
   if (!products?.length) return null;
 

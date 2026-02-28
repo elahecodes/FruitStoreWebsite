@@ -1,16 +1,21 @@
 import React from "react";
-import {Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../components/header.jsx";
 import Footer from "../components/footer.jsx";
 
-const mainLayout = () => {
+const MainLayout = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+
+      {/* main به اندازه محتوا است، scroll روی window */}
+      <main className="flex-1">
+        <Outlet />
+      </main>
+
       <Footer />
     </div>
   );
 };
 
-export default mainLayout;
+export default MainLayout;

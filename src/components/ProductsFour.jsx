@@ -6,6 +6,7 @@ import shop from "../assets/icons/shopW.png";
 import { Link } from "react-router-dom";
 const ProductsFour = () => {
   const data = useContext(ProductsContext);
+  const products = data.slice(0,12); 
   return (
     <div className="flex flex-col justify-start items-center gap-5 p-4 rounded-2xl mt-16">
       <div className="w-full flex justify-between items-center bg-white px-2 py-1 rounded border border-neutral-100">
@@ -21,7 +22,7 @@ const ProductsFour = () => {
         </button>
       </div>
       <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 md:gap-3">
-        {data.map((item) => (
+        {products.map((item) => (
           <Link key={item.id} to={`/products/${item.id}`}>
             <div className="slide snap-start hover:border-orange transition-all cursor-pointer border shrink-0 border-neutral-300 bg-white rounded-xl flex flex-col justify-between p-2 md:gap-3">
               <div className="h-40 overflow-hidden">

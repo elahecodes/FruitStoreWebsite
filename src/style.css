@@ -92,7 +92,7 @@
 
 /* استایل برای body */
 body {
-  @apply bg-bg px-3 py-5;
+  @apply bg-bg px-3;
 }
 
 @media screen and (max-width: 1200px) {

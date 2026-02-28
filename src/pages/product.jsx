@@ -6,7 +6,9 @@ const Product = ({ productData }) => {
       key={productData?.id}
       className="slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
     >
-      <img className="w-full" src={productData?.imgOne} alt="image" />
+      <div className="h-40 overflow-hidden">
+        <img className="w-11/12" src={productData?.imgOne} alt="image" />
+      </div>
       <span className="text-sm md:text-xl">{productData?.title}</span>
       <div className="w-full rounded-md bg-green-lightness p-1 flex justify-between items-center self-end">
         <div className="flex flex-col justify-start">
@@ -17,7 +19,7 @@ const Product = ({ productData }) => {
           </b>
         </div>
         <button className="hidden md:block bg-green-primery p-1 md:p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-green-primery hover:scale-110 transition-all">
-          <img className="md:w-6 md:h-6 w-4 h-4" src={shop} alt="" />
+          <img className="md:w-6 md:h-6 w-4 h-4" src={shop} alt="دکمه خرید" />
         </button>
       </div>
     </div>
