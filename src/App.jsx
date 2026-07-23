@@ -15,6 +15,8 @@ import BlogsProvider from "./components/BlogsProvider.jsx";
 import BlogsPage from "./components/BlogsPage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import Notification from "./components/Notification.jsx";
+import Questions from "./pages/Questions.jsx";
 
 function App() {
   return (
@@ -33,11 +35,16 @@ function App() {
                 <Route path="/products/:id" element={<ProductPage />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/shopcart" element={<ShopCart />} />
+                <Route path="/notifications" element={<Notification />} />
+                <Route path="/Questions" element={<Questions />} />
               </Route>
 
               <Route element={<AuthLayout />}>
                 <Route path="/login" element={<Login />} />
-                <Route path="/verificationCode" element={<VerificationCode />} />
+                <Route
+                  path="/verificationCode"
+                  element={<VerificationCode />}
+                />
               </Route>
             </Routes>
           </BlogsProvider>

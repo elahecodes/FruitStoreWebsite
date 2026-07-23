@@ -8,6 +8,7 @@ import link from "../assets/icons/link.png";
 import support from "../assets/icons/support.png";
 import volume from "../assets/icons/volume.png";
 import category from "../assets/icons/category.png";
+import { formatPrice } from "../helper/functions";
 
 const Footer = () => {
   const { state } = useContext(CartContext);
@@ -53,7 +54,7 @@ const Footer = () => {
       selectedIcon: (
         <svg
           fill="#a4de02"
-          className="w-5"
+          className="w-5 h-5"
           viewBox="0 0 24 24"
           width="512"
           height="512"
@@ -64,7 +65,7 @@ const Footer = () => {
       icon: (
         <svg
           fill="#404040"
-          className="w-5"
+          className="w-5 h-5"
           id="Layer_1"
           data-name="Layer 1"
           viewBox="0 0 24 24"
@@ -80,7 +81,7 @@ const Footer = () => {
       selectedIcon: (
         <svg
           fill="#a4de02"
-          className="w-5"
+          className="w-5 h-5"
           id="Layer_1"
           data-name="Layer 1"
           viewBox="0 0 24 24"
@@ -93,7 +94,7 @@ const Footer = () => {
       icon: (
         <svg
           fill="#404040"
-          className="w-5"
+          className="w-5 h-5"
           id="Layer_1"
           data-name="Layer 1"
           viewBox="0 0 24 24"
@@ -109,7 +110,7 @@ const Footer = () => {
       selectedIcon: (
         <svg
           fill="#a4de02"
-          className="w-5"
+          className="w-5 h-5"
           version="1.1"
           id="Capa_1"
           x="0px"
@@ -136,7 +137,7 @@ const Footer = () => {
       icon: (
         <svg
           fill="#404040"
-          className="w-5"
+          className="w-5 h-5"
           id="Outline"
           viewBox="0 0 24 24"
           width="512"
@@ -151,7 +152,7 @@ const Footer = () => {
       selectedIcon: (
         <svg
           fill="#a4de02"
-          className="w-5"
+          className="w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
           id="Filled"
           viewBox="0 0 24 24"
@@ -164,7 +165,7 @@ const Footer = () => {
       icon: (
         <svg
           fill="#404040"
-          className="w-5"
+          className="w-5 h-5"
           id="Outline"
           viewBox="0 0 24 24"
           width="512"
@@ -179,7 +180,7 @@ const Footer = () => {
       selectedIcon: (
         <svg
           fill="#a4de02"
-          className="w-5"
+          className="w-5 h-5"
           id="Filled"
           viewBox="0 0 24 24"
           width="512"
@@ -191,7 +192,7 @@ const Footer = () => {
       icon: (
         <svg
           fill="#404040"
-          className="w-5"
+          className="w-5 h-5"
           viewBox="0 0 24 24"
           width="512"
           height="512"
@@ -207,170 +208,156 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="flex fixed bottom-0 w-full  md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:bottom-0 md:rounded-xl right-0 md:p-4">
-      <ul className="md:hidden w-full h-14 flex justify-between items-center px-4">
-        {data.map((item, index) => {
-          const isCart = item.ads === "/ShopCart";
-          const isActive = location.pathname === item.ads;
-          return (
-            <li
-              key={index}
-              className="relative flex justify-center items-center h-4"
-            >
+    <footer className="flex justify-center items-center w-full">
+      <div className="flex fixed bottom-0 max-w-[1530px] w-full md:bg-neutral-700 bg-white border-t-3 md:border-none border-green-primery z-20 md:static md:bottom-0 md:rounded-xl right-0 md:p-4">
+        <ul className="md:hidden w-full h-14 flex justify-between items-center px-4">
+          {data.map((item, index) => {
+            const isCart = item.ads === "/ShopCart";
+            const isActive = location.pathname === item.ads;
+            return (
               <Link to={item.ads}>
-                {isActive ? item.selectedIcon : item.icon}
+                <li
+                  key={index + 1}
+                  className="relative flex justify-center items-center w-8 h-8"
+                >
+                  {isActive ? item.selectedIcon : item.icon}
 
-                {isCart && cartCount >= 0 && (
-                  <div className="absolute top-0 z-30 -right-2 bg-orange text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full shadow animate-bounce">
-                    {cartCount}
-                  </div>
-                )}
+                  {isCart && cartCount >= 0 && (
+                    <div className="absolute top-2 z-30 -right-1 bg-orange text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full shadow animate-bounce">
+                      {formatPrice(cartCount)}
+                    </div>
+                  )}
+                </li>
               </Link>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className="hidden md:block w-full px-6 py-12">
-        <div
-          className="max-w-7xl mx-auto
-               grid grid-cols-1
-               sm:grid-cols-2
-               lg:grid-cols-5
-               gap-10"
-        >
-          {/* ستون 1 - درباره فروشگاه */}
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 h-8">
-              <img src="" alt="" />
-              <h4 className="text-white font-bold text-lg">فروشگاه</h4>
+            );
+          })}
+        </ul>
+        <div className="hidden md:block w-full px-6 py-12">
+          <div
+            className="mx-auto
+               grid 
+               sm:grid-cols-3
+               lg:grid-cols-4"
+          >
+            {/* ستون 2 - لینک‌های مهم */}
+            <div className="flex flex-col gap-4">
+              <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
+                <img className="w-4 h-4" src={link} alt="" />
+                لینک‌های مهم
+              </h5>
+              <ul className="mt-2 flex flex-col gap-3">
+                {pagesBtn.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      to={item.url}
+                      className="text-neutral-200 text-xs lg:text-sm flex items-center gap-2
+                         relative before:content-['']
+                         before:hidden hover:before:block
+                         before:w-2 before:h-2
+                         before:bg-green-secondry
+                         before:rounded-full
+                         hover:before:transition-all"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-neutral-200 text-sm text-justify leading-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Distinctio animi repellendus numquam ut unde. Totam libero,
-              expedita voluptatum eveniet autem sapiente natus maiores ullam
-              quae deleniti adipisci laboriosam corrupti esse.
-            </p>
-          </div>
 
-          {/* ستون 2 - لینک‌های مهم */}
-          <div className="flex flex-col gap-4">
-            <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
-              <img className="w-4 h-4" src={link} alt="" />
-              لینک‌های مهم
-            </h5>
-            <ul className="mt-2 flex flex-col gap-3">
-              {pagesBtn.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={item.url}
-                    className="text-neutral-200 text-sm flex items-center gap-2
+            {/* ستون 3 - دسته‌بندی‌ها */}
+            <div className="flex flex-col gap-4">
+              <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
+                <img className="w-4 h-4" src={category} alt="" />
+                دسته بندی ها
+              </h5>
+              <ul className="mt-2 flex flex-col gap-3">
+                {categoriesBtn.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      className="text-neutral-200 text-xs lg:text-sm flex items-center gap-2
                          relative before:content-['']
                          before:hidden hover:before:block
                          before:w-2 before:h-2
                          before:bg-green-secondry
                          before:rounded-full
                          hover:before:transition-all"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* ستون 3 - دسته‌بندی‌ها */}
-          <div className="flex flex-col gap-4">
-            <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
-              <img className="w-4 h-4" src={category} alt="" />
-              دسته بندی ها
-            </h5>
-            <ul className="mt-2 flex flex-col gap-3">
-              {categoriesBtn.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    className="text-neutral-200 text-sm flex items-center gap-2
+            {/* ستون 4 - پشتیبانی */}
+            <div className="flex flex-col gap-4">
+              <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
+                <img className="w-4 h-4" src={support} alt="" />
+                پشتیبانی و خدمات
+              </h5>
+              <ul className="mt-2 flex flex-col gap-3">
+                {supportBtn.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      className="text-neutral-200 text-xs lg:text-sm flex items-center gap-2
                          relative before:content-['']
                          before:hidden hover:before:block
                          before:w-2 before:h-2
                          before:bg-green-secondry
                          before:rounded-full
                          hover:before:transition-all"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* ستون 4 - پشتیبانی */}
-          <div className="flex flex-col gap-4">
-            <h5 className="text-white font-bold text-base sm:text-lg flex items-center gap-1">
-              <img className="w-4 h-4" src={support} alt="" />
-              پشتیبانی و خدمات
-            </h5>
-            <ul className="mt-2 flex flex-col gap-3">
-              {supportBtn.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    className="text-neutral-200 text-sm flex items-center gap-2
-                         relative before:content-['']
-                         before:hidden hover:before:block
-                         before:w-2 before:h-2
-                         before:bg-green-secondry
-                         before:rounded-full
-                         hover:before:transition-all"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* ستون 5 - خبرنامه و شبکه اجتماعی */}
+            <div className="flex flex-col justify-between gap-8 mt-10 lg:mt-0 sm:w-[30rem] lg:w-auto">
+              <form className="flex flex-col gap-5">
+                <label className="text-white flex items-center gap-1 text-sm sm:text-base">
+                  <img className="w-4 h-4" src={volume} alt="" />
+                  در خبرنامه شرکت کنید
+                </label>
 
-          {/* ستون 5 - خبرنامه و شبکه اجتماعی */}
-          <div className="flex flex-col justify-between gap-8">
-            <form className="flex flex-col gap-5">
-              <label className="text-white flex items-center gap-1 text-sm sm:text-base">
-                <img className="w-4 h-4" src={volume} alt="" />
-                در خبرنامه شرکت کنید
-              </label>
-
-              <div className="flex w-full">
-                <input
-                  className="w-full bg-neutral-200 text-xs px-3 outline-none
+                <div className="flex w-full">
+                  <input
+                    className="w-full bg-neutral-200 text-xs px-3 outline-none
                        h-10 rounded-br-sm rounded-tr-sm"
-                  type="text"
-                  placeholder="ایمیل یا شماره همراه خود را وارد کنید"
-                />
-                <button
-                  type="submit"
-                  className="w-16 h-10 text-xs font-bold
+                    type="text"
+                    placeholder="ایمیل یا شماره همراه خود را وارد کنید"
+                  />
+                  <button
+                    type="submit"
+                    className="w-16 h-10 text-xs font-bold
                        text-neutral-700 bg-green-primery
                        rounded-bl-sm rounded-tl-sm"
-                >
-                  ثبت
-                </button>
-              </div>
-            </form>
+                  >
+                    ثبت
+                  </button>
+                </div>
+              </form>
 
-            <div className="flex items-center gap-3">
-              <img
-                className="w-8 h-8 cursor-pointer hover:scale-110 transition"
-                src={instagram}
-                alt=""
-              />
-              <img
-                className="w-8 h-8 cursor-pointer hover:scale-110 transition"
-                src={whatsApp}
-                alt=""
-              />
-              <img
-                className="w-8 h-8 cursor-pointer hover:scale-110 transition"
-                src={telegram}
-                alt=""
-              />
+              <div className="flex items-center gap-3">
+                <img
+                  className="w-8 h-8 cursor-pointer hover:scale-110 transition"
+                  src={instagram}
+                  alt=""
+                />
+                <img
+                  className="w-8 h-8 cursor-pointer hover:scale-110 transition"
+                  src={whatsApp}
+                  alt=""
+                />
+                <img
+                  className="w-8 h-8 cursor-pointer hover:scale-110 transition"
+                  src={telegram}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>

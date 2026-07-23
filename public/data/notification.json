@@ -1,0 +1,82 @@
+[
+  {
+    "img": "/icons/discount.png",
+    "title": "تخفیف به مناسبت روز بانو",
+    "festival": false,
+    "discount": true,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/megaphone.png",
+    "title": "این یک پبام عمومی است",
+    "festival": false,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/fesival.png",
+    "title": "جشنواره عیدانه شروع شد",
+    "festival": true,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/discount.png",
+    "title": "تخفیف به مناسبت روز بانو",
+    "festival": false,
+    "discount": true,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/megaphone.png",
+    "title": "این یک پبام عمومی است",
+    "festival": false,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/fesival.png",
+    "title": "جشنواره عیدانه شروع شد",
+    "festival": true,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/megaphone.png",
+    "title": "این یک پبام عمومی است",
+    "festival": false,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/fesival.png",
+    "title": "جشنواره عیدانه شروع شد",
+    "festival": true,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/megaphone.png",
+    "title": "این یک پبام عمومی است",
+    "festival": false,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  },
+  {
+    "img": "/icons/fesival.png",
+    "title": "جشنواره عیدانه شروع شد",
+    "festival": true,
+    "discount": false,
+    "purchases": false,
+    "description": "به مناسبت روز بانوان عزیز تخفیف و هدایای باورنکردنی در ی شگفت انگیز محصولات را مشاهده نمایید"
+  }
+]

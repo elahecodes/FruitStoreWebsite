@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
+
 const Rating = ({ productID }) => {
   const [rating, setRaring] = useState(0);
 
@@ -8,7 +9,8 @@ const Rating = ({ productID }) => {
     if (saveRating) {
         setRaring(Number(saveRating))
     }
-  },[productID])
+  },[productID]);
+  
   const handelClick = (value) => {
     setRaring(value)
     localStorage.setItem(`Rating-${productID}`, value);

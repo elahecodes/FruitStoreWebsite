@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @font-face {
   font-family: "lalezar";
   src: url("/src/assets/fonts/Lalezar-Regular.ttf") format("truetype");
@@ -10,8 +9,6 @@
   src: url("/src/assets/fonts/Dirooz.ttf") format("truetype");
 }
 
-
-
 @theme {
   --color-green-primery: #a4de02;
   --color-orange: #ffa500;
@@ -20,12 +17,12 @@
   --color-bg: #f9fff3;
   --color-green-lightness: #e2ff8c;
   --shadow-green-primery: 0 0 0 10px 20px;
-  --font-lalezar :"lalezar" , sans-serif;
-  --font-dirooz :"dirooz" , sans-serif;
+  --font-lalezar: "lalezar", sans-serif;
+  --font-dirooz: "dirooz", sans-serif;
 }
 
-@layer base{
-  body{
+@layer base {
+  body {
     font-family: var(--font-dirooz);
   }
 }
@@ -49,30 +46,10 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  .scrollbar-custom::-webkit-scrollbar {
-    background-color: transparent;
-    height: 0.5rem;
-  }
 
-  .scrollbar-custom::-webkit-scrollbar-track {
-    background: #e5e5e5;
-    width: 10rem;
-    border-radius: 1rem;
-    margin-left: 25rem;
-    margin-right: 25rem;
-  }
-
-  .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: var(--color-orange);
-    border-radius: 10px;
-  }
-
-  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
-    background: #e07c00;
-  }
   ::-webkit-scrollbar {
     background-color: transparent;
-    width: 15px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
     background-color: rgb(231, 231, 231);
@@ -84,22 +61,14 @@
   .font-lalezar {
     font-family: var(--font-lalezar);
   }
-  .font-dirooz{
-    font-family: var(--font-dirooz)
+  .font-dirooz {
+    font-family: var(--font-dirooz);
   }
 }
-
 
 /* استایل برای body */
 body {
-  @apply bg-bg px-3;
-}
-
-@media screen and (max-width: 1200px) {
-  .scrollbar-custom::-webkit-scrollbar-track {
-    margin-left: 10rem;
-    margin-right: 10rem;
-  }
+  @apply bg-bg px-2;
 }
 
 /* ساخت کلاس انیمیشن */
@@ -121,4 +90,7 @@ body {
   background-color: var(--color-bg);
 }
 
-
+::selection {
+  background-color: var(--color-green-primery);
+  color: white;
+}

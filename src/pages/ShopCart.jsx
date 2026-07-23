@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { CartContext } from "./CartContextProvider.jsx";
 import Cart from "../components/Cart.jsx";
 import Pay from "../components/pay.jsx";
-import emptyCart from "/src/assets/icons/emptyCart.png";
+import emptyCart from "../assets/icons/emptyCart.png";
 
 const ShopCart = () => {
   const { state } = useContext(CartContext);
   return (
-    <main className="md:my-24 flex flex-col justify-between items-start gap-6">
-      <div className="font-bold text-xl w-full text-center">
+    <main className="md:my-24 flex flex-col justify-between lg:items-center items-start gap-6">
+      <div className="font-bold max-w-[1530px] text-xl w-full text-center">
         {state.selectedItems.length === 0 ? (
           <div className="flex flex-col justify-center items-center h-72 mt-20 gap-5">
             <p className="text-neutral-600">سبد خرید شما خالی است</p>

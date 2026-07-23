@@ -1,7 +1,5 @@
 import { lazy, Suspense } from "react";
 import { useInView } from "react-intersection-observer";
-
-const Brands = lazy(() => import("../components/Brands"));
 const Categories = lazy(() => import("../components/Categories"));
 const ProductsOne = lazy(() => import("../components/ProductsOne"));
 const ProductsTwo = lazy(() => import("../components/productsTwo"));
@@ -9,10 +7,10 @@ const ProductsThree = lazy(() => import("../components/ProductsThree"));
 const ProductsFour = lazy(() => import("../components/ProductsFour"));
 const Services = lazy(() => import("../components/Services"));
 const Banner = lazy(() => import("../components/Banner"));
-
+const BlogsInHome = lazy(() => import("../components/BlogsInHome"));
 const SectionLoader = () => (
   <div className="w-full h-40 flex justify-center items-center">
-    <div className="animate-pulse text-gray-800">در حال بارگذاری...</div>
+    <div className="animate-pulse text-gray-800">در حال بارگذاری</div>
   </div>
 );
 
@@ -35,7 +33,7 @@ const LazySection = ({ children }) => {
 
 const Home = () => {
   return (
-    <main className="mb-20 md:mt-20">
+    <main className="mb-20 md:mt-24">
       <LazySection>
         <Banner />
       </LazySection>
@@ -58,7 +56,7 @@ const Home = () => {
         <ProductsFour />
       </LazySection>
       <LazySection>
-        <Brands />
+        <BlogsInHome />
       </LazySection>
     </main>
   );

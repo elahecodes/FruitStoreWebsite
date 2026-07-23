@@ -31,6 +31,8 @@ const verificationCode = () => {
   };
 
   return (
+    <div className="w-full flex justify-center items-center">
+
     <div className="flex flex-col-reverse md:flex-row justify-center items-center gap-32 mt-28 md:mt-44">
       <div className="flex flex-col justify-center items-center md:items-start gap-14">
         <h3>کد ارسال شده را وارد کنید</h3>
@@ -305,6 +307,7 @@ const verificationCode = () => {
           </g>
         </svg>
       </div>
+    </div>
     </div>
   );
 };

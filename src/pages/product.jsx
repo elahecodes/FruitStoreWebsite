@@ -1,12 +1,12 @@
 import React from "react";
-import shop from "../assets/icons/shop.png";
-const Product = ({ productData }) => {
+import { formatPrice } from "../helper/functions.js";
+import shop from "../assets/icons/shopW.png";
+const Product = ({ diffrent, productData }) => {
   return (
     <div
-      key={productData?.id}
-      className="slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3"
+      className={`slide h-62 md:h-80 hover:border-green-secondry border-green-primery border shrink-0 transition-all cursor-pointer border-neutral-300 bg-white rounded-lg flex flex-col justify-between p-2 gap-3 ${diffrent === true ? "w-auto" : " w-[10rem] md:w-52"}`}
     >
-      <div className="h-40 overflow-hidden">
+      <div className="h-52 overflow-hidden">
         <img className="w-11/12" src={productData?.imgOne} alt="image" />
       </div>
       <span className="text-sm md:text-xl">{productData?.title}</span>
@@ -14,7 +14,7 @@ const Product = ({ productData }) => {
         <div className="flex flex-col justify-start">
           <span className="text-xs md:text-sm">هرکیلو</span>
           <b className="text-xs md:text-sm">
-            {productData?.price}
+            {formatPrice(productData?.price)}
             <span className="text-xs text-gray-500 mr-1.5">تومان</span>
           </b>
         </div>
